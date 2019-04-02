@@ -1,0 +1,83 @@
+body{
+    background:#f4f4f4;
+  }
+  
+  /* Navbar */
+.main-color-bg{
+  background-color: #3c86e7;
+  border-color: #3c86e7;
+}
+
+.navbar-default {
+    padding-top: 5px;
+    background-color: #3c86e7;
+    border-color: #3c86e7;  
+    margin-bottom:0;
+    border-radius:0;
+  }
+  .navbar-default .navbar-brand {
+    color: #ecf0f1;
+  }
+  
+  .navbar-default .navbar-text {
+    color: #ecf0f1;
+  }
+  .mr-left{
+    margin-left: 85px;
+   
+}
+
+  .navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+    color: #05041a;
+  }
+  
+  .navbar-default .navbar-nav > .open > a,
+  .navbar-default .navbar-nav > .open > a:hover,
+  .navbar-default .navbar-nav > .open > a:focus {
+    color: #05041a;
+    background-color: #3c86e7;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: #3c86e7;
+  }
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+    background-color: #3c86e7;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+  }
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
+    border-color: #ecf0f1;
+  }
+  .navbar-default .navbar-link {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-link:hover {
+    color: #05041a;
+  }
+
+  /* header */
+
+  #header{
+    background:#333333;
+    color:#ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  #header .create{
+    padding-top: 20px;
+  }
+
+  .text-padding{
+     padding-top: 20px;
+  }
+
+  
+
+   

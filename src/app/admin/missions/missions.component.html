@@ -1,0 +1,96 @@
+<div class="panel panel-default">
+  <div class="panel-heading main-color-bg">
+    <h3 class="panel-title panel-text" style="color:#ecf0f1;">Missions</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+          <div class="col-md-12">
+              <input class="form-control" type="text" placeholder="Filter Users...">
+          </div>
+    </div>
+    <br>
+    
+
+  <div style="width: 80%">
+    <ngx-datatable
+        #mydatatable
+        class="material"
+        [headerHeight]="50"
+        [limit]="5"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [rows]="rows">
+        <ngx-datatable-column name="Name">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-name'] = true"
+              *ngIf="!editing[rowIndex + '-name']">
+              {{row.id}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'name', rowIndex)"
+              *ngIf="editing[rowIndex+ '-name']"
+              type="text"
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="att1">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-att1'] = true"
+              *ngIf="!editing[rowIndex + '-att1']">
+              {{row.att1}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'att1', rowIndex)"
+              *ngIf="editing[rowIndex+ '-att1']"
+              type="text"
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="att2">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-att2'] = true"
+              *ngIf="!editing[rowIndex + '-att2']">
+              {{row.att2}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'att2', rowIndex)"
+              *ngIf="editing[rowIndex+ '-att2']"
+              type="text"
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+  </div>
+
+
+
+
+
+
+
+
+   <section id="breadcrumb">
+     
+        <ol class="breadcrumb">
+          <li class="active"></li>
+        </ol>
+      
+    </section>
+
+
+  
+
+  
