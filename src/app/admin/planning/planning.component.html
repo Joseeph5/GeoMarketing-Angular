@@ -1,26 +1,59 @@
 
-    <div>
-    <h3 class="mb-3 text-center">Update Mission</h3>
-
-    <div class="form-group">
-      <input type="text"  class="form-control" placeholder="att1">
-    </div>
-
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="att2">
-    </div>
-
     
 
-    <div class="form-group">
-      <button class="btn btn-success btn-lg btn-block" >Update Mission</button>
-    </div>
-
-  </div>
-  <!-- <ul>
-    <li >{{ missionById.att1 }}</li>
-    <li >{{ missionById.att2 }}</li>
-</ul> -->
+  
+  <div>
+    <ngx-datatable
+        #mydatatable
+        class="material"
+        [headerHeight]="50"
+        [limit]="5"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [rows]="www">
+        <ngx-datatable-column name="id">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"  let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-name'] = true"
+              *ngIf="!editing[rowIndex + '-name']">
+              {{value}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'name', rowIndex)"
+              *ngIf="editing[rowIndex+ '-name']"
+              type="text"
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Gender">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+             <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-gender'] = true"
+              *ngIf="!editing[rowIndex + '-gender']">
+              {{row.name}}
+            </span>
+            <select
+              *ngIf="editing[rowIndex + '-gender']"
+              (blur)="editing[rowIndex + '-gender'] = false"
+              (change)="updateValue($event, 'gender', rowIndex)"
+              [value]="value">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Age">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+  </div>  
     
  
 

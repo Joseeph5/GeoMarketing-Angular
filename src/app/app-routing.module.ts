@@ -7,7 +7,7 @@ import { PlanningComponent } from './admin/planning/planning.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
-  {path:'user',component:UserComponent},
+  {path:'driver',component:UserComponent},
   {path:'mission',component:MissionsComponent},
   {path:'planning',component:PlanningComponent}
 ];

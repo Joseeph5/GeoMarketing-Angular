@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
-import { User } from 'src/app/shared/User';
+import { Driver } from 'src/app/shared/Driver';
+
+import { Row } from 'src/app/shared/Row';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -10,7 +12,14 @@ export class UserComponent implements OnInit {
 
   editing = {};
   
-  rows:User[];
+  row:any[]= [
+    {driver_id : "add id", cin :'add cin', email : 'add email',first_name : 'add name', 
+    last_name : "add last name ", telephone :' add telephone', blood_group : 'add blood'}
+  
+      ];
+  rows:Driver[];
+  
+  
   constructor(private apiService:ApiServiceService){}
 
   ngOnInit(){
@@ -18,6 +27,7 @@ export class UserComponent implements OnInit {
       this.rows=data
       console.log(this.rows)
      });
+     
   }
 
   updateValue(event, cell, rowIndex) {
@@ -31,10 +41,17 @@ export class UserComponent implements OnInit {
 
     
    console.log('id',this.rows[rowIndex].driver_id);
-   console.log('mission',this.rows[rowIndex]);
+   console.log('driver',this.rows[rowIndex][cell]); 
 
    this.apiService.updateMission(this.rows[rowIndex].driver_id,this.rows[rowIndex]).subscribe(()=>
    console.log('success'));;
 
+  }
+  
+
+  delete(id:any){
+    
+    this.apiService.delete(id).subscribe(()=>
+      console.log('delete '+id));
   }
 }

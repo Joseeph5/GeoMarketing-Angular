@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service.service';
-import { User } from 'src/app/shared/User';
+
+import { Mission } from 'src/app/shared/Mission';
+import { MissionServiceService } from 'src/app/services/mission-service.service';
 
 @Component({
   selector: 'app-missions',
@@ -11,16 +12,16 @@ export class MissionsComponent implements OnInit {
   
   editing = {};
   
-  rows:User[];
+  rows:Mission[];
   
 
-  constructor(private apiService:ApiServiceService){
+  constructor(private missionservice:MissionServiceService){
    
    
-  }
+  } 
 
   ngOnInit(){
-   return this.apiService.getData().subscribe(data => {
+   return this.missionservice.getData().subscribe(data => {
      this.rows=data
      console.log(this.rows)
     });
@@ -40,15 +41,20 @@ export class MissionsComponent implements OnInit {
    console.log('UPDATED!', this.rows[rowIndex][cell]);
 
     
-   console.log('id',this.rows[rowIndex]);
+   console.log('id',this.rows[rowIndex].idmission);
    console.log('mission',this.rows[rowIndex]);
 
-   this.apiService.updateMission(this.rows[rowIndex],this.rows[rowIndex]).subscribe(()=>
+   this.missionservice.updateMission(this.rows[rowIndex].idmission,this.rows[rowIndex]).subscribe(()=>
    console.log('success'));;
 
     
   
-}
+  }
+  delete(id:any){
+    
+    this.missionservice.delete(id).subscribe(()=>
+      console.log('delete '+id));
+  }
 
   
 }

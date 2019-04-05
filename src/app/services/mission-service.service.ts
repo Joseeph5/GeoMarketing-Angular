@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable ,throwError} from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Driver } from '../shared/Driver'
+import { Mission } from '../shared/Mission'
 import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class MissionServiceService {
+  DataURL = 'http://127.0.0.1:8000/mission';
+  UpdateURL='http://127.0.0.1:8000/updatemission';
+  DeleteURL='http://127.0.0.1:8000/removemission';
 
-  DataURL = 'http://127.0.0.1:8000/driver';
-  UpdateURL='http://127.0.0.1:8000/updatedriver';
-  DeleteURL='http://127.0.0.1:8000/removedriver';
-  
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -24,29 +23,28 @@ export class ApiServiceService {
     window.alert(errorMessage);
     return throwError(errorMessage);
  }
-
-  constructor( private http: HttpClient) { }
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }  
-  getData(): Observable<Driver[]>{
-    return this.http.get<Driver[]>(this.DataURL).pipe(
+ httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}  
+  constructor(private http: HttpClient) { }
+  getData(): Observable<Mission[]>{
+    return this.http.get<Mission[]>(this.DataURL).pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
 
-  getDataById(id:any): Observable<Driver[]>{
-    return this.http.get<Driver[]>(this.DataURL+'/'+id).pipe(
+  getDataById(id:any): Observable<Mission[]>{
+    return this.http.get<Mission[]>(this.DataURL+'/'+id).pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
 
-  updateMission(id:any, driver:any): Observable<Driver> {
-    return this.http.put<Driver>(this.UpdateURL+'/'+id, JSON.stringify(driver), this.httpOptions)
+  updateMission(id:any, mission:Mission): Observable<Mission> {
+    return this.http.put<Mission>(this.UpdateURL+'/'+id, JSON.stringify(mission), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -54,8 +52,8 @@ export class ApiServiceService {
     
   }
 
-  delete(id:any):Observable<Driver>{
-    return this.http.delete<Driver>(this.DeleteURL+'/'+id,this.httpOptions)
+  delete(id:any):Observable<Mission>{
+    return this.http.delete<Mission>(this.DeleteURL+'/'+id,this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -11,7 +11,7 @@
     <br>
     
 
-  <div style="width: 80%">
+  <div>
     <ngx-datatable
         #mydatatable
         class="material"
@@ -21,55 +21,96 @@
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [rows]="rows">
-        <ngx-datatable-column name="Name">
+        <ngx-datatable-column name="idmission">
           <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
             <span
               title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-name'] = true"
-              *ngIf="!editing[rowIndex + '-name']">
-              {{row.id}}
+              (dblclick)="editing[rowIndex + '-idmission'] = true"
+              *ngIf="!editing[rowIndex + '-idmission']">
+              {{row.idmission}}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, 'name', rowIndex)"
-              *ngIf="editing[rowIndex+ '-name']"
+              (blur)="updateValue($event, 'idmission', rowIndex)"
+              *ngIf="editing[rowIndex+ '-idmission']"
               type="text"
               [value]="value"
             />
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="att1">
+        <ngx-datatable-column name="datedeb"> 
           <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
             <span
               title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-att1'] = true"
-              *ngIf="!editing[rowIndex + '-att1']">
-              {{row.att1}}
+              (dblclick)="editing[rowIndex + '-datedeb'] = true"
+              *ngIf="!editing[rowIndex + '-datedeb']">
+              {{row.date_deb}}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, 'att1', rowIndex)"
-              *ngIf="editing[rowIndex+ '-att1']"
+              (blur)="updateValue($event, 'datedeb', rowIndex)"
+              *ngIf="editing[rowIndex+ '-datedeb']"
+              type="text" 
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="date_fin">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-date_fin'] = true"
+              *ngIf="!editing[rowIndex + '-date_fin']">
+              {{row.date_fin}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'date_fin', rowIndex)"
+              *ngIf="editing[rowIndex+ '-date_fin']"
               type="text"
               [value]="value"
             />
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="att2">
-          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <ngx-datatable-column name="iddriver">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
             <span
               title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-att2'] = true"
-              *ngIf="!editing[rowIndex + '-att2']">
-              {{row.att2}}
+              (dblclick)="editing[rowIndex + '-iddriver'] = true"
+              *ngIf="!editing[rowIndex + '-iddriver']">
+              {{row.iddriver.driver_id}}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, 'att2', rowIndex)"
-              *ngIf="editing[rowIndex+ '-att2']"
+              (blur)="updateValue($event, 'iddriver', rowIndex)"
+              *ngIf="editing[rowIndex+ '-iddriver']"
               type="text"
               [value]="value"
             />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="idvehicule">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-idvehicule'] = true"
+              *ngIf="!editing[rowIndex + '-idvehicule']">
+              {{row.idvehicule.vehicule_id}}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, 'idvehicule', rowIndex)"
+              *ngIf="editing[rowIndex+ '-idvehicule']"
+              type="text"
+              [value]="value"
+            />
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
+          <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+            <button class="btn btn-sm btn-danger" (click)="delete(id)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
           </ng-template>
         </ngx-datatable-column>
       </ngx-datatable>
