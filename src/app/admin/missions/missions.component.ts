@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Mission } from 'src/app/shared/Mission';
 import { MissionServiceService } from 'src/app/services/mission-service.service';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddFormComponent } from '../add-form/add-form.component';
 @Component({
   selector: 'app-missions',
   templateUrl: './missions.component.html',
@@ -15,7 +16,7 @@ export class MissionsComponent implements OnInit {
   rows:Mission[];
   
 
-  constructor(private missionservice:MissionServiceService){
+  constructor(private missionservice:MissionServiceService,public dialog: MatDialog){
    
    
   } 
@@ -32,17 +33,11 @@ export class MissionsComponent implements OnInit {
     console.log('inline editing rowIndex', rowIndex)
     this.editing[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    //this.rows = [...this.rows];
+  
+    console.log('UPDATED!', this.rows[rowIndex][cell]);
 
-    
-    
-
-   //this.user[rowIndex].att1 = this.rows[rowIndex][cell];
-   console.log('UPDATED!', this.rows[rowIndex][cell]);
-
-    
-   console.log('id',this.rows[rowIndex].idmission);
-   console.log('mission',this.rows[rowIndex]);
+    console.log('id',this.rows[rowIndex].idmission);
+    console.log('mission',this.rows[rowIndex]);
 
    this.missionservice.updateMission(this.rows[rowIndex].idmission,this.rows[rowIndex]).subscribe(()=>
    console.log('success'));;
@@ -55,6 +50,16 @@ export class MissionsComponent implements OnInit {
     this.missionservice.delete(id).subscribe(()=>
       console.log('delete '+id));
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddFormComponent, {
+      width: '1000px',
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
   
 }

@@ -1,59 +1,58 @@
 
     
-
-  
   <div>
-    <ngx-datatable
-        #mydatatable
-        class="material"
-        [headerHeight]="50"
-        [limit]="5"
-        [columnMode]="'force'"
-        [footerHeight]="50"
-        [rowHeight]="'auto'"
-        [rows]="www">
-        <ngx-datatable-column name="id">
-          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"  let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-name'] = true"
-              *ngIf="!editing[rowIndex + '-name']">
-              {{value}}
-            </span>
-            <input
-              autofocus
-              (blur)="updateValue($event, 'name', rowIndex)"
-              *ngIf="editing[rowIndex+ '-name']"
-              type="text"
-              [value]="value"
-            />
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Gender">
-          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
-             <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-gender'] = true"
-              *ngIf="!editing[rowIndex + '-gender']">
-              {{row.name}}
-            </span>
-            <select
-              *ngIf="editing[rowIndex + '-gender']"
-              (blur)="editing[rowIndex + '-gender'] = false"
-              (change)="updateValue($event, 'gender', rowIndex)"
-              [value]="value">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Age">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-      </ngx-datatable>
-  </div>  
+   <h4>Basic mat-select</h4>
+   <mat-form-field>
+      <mat-label>Les Groupes</mat-label>
+     <mat-select>
+       <mat-option *ngFor="let food of foods" [value]="food.value">
+         {{food.viewValue}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+   
+   <mat-form-field class="mg">
+      <mat-label>Les Vehicules</mat-label>
+     <mat-select>
+       <mat-option *ngFor="let food of foods" [value]="food.value">
+         {{food.viewValue}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+   
+   <mat-form-field class="mg">
+      <mat-label>Les chauffeurs</mat-label>
+     <mat-select>
+       <mat-option *ngFor="let food of foods" [value]="food.value">
+         {{food.viewValue}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+
+   
+   <button type="button" class="btn btn-success mg">Recherche</button>
+  </div> 
+   
+  <mat-horizontal-stepper>
+    <mat-step label="Step 1" state="phone">
+      <p>Put down your phones.</p>
+      <div>
+        
+      </div>
+    </mat-step>
+    <mat-step label="Step 2" state="chat">
+      <p>Socialize with each other.</p>
+      
+    </mat-step>
+    <mat-step label="Step 3">
+      <p>You're welcome.</p>
+    </mat-step>
+    </mat-horizontal-stepper>
+
+    
+  <div id="map">
+
+  </div>
     
  
 

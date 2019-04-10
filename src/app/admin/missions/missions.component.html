@@ -4,19 +4,24 @@
   </div>
   <div class="panel-body">
     <div class="row">
-          <div class="col-md-12">
-              <input class="form-control" type="text" placeholder="Filter Users...">
-          </div>
+        <div class=" col-md-offset-10">
+            <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
+            
+          </div>   
+             
+          <!-- <div class="col-md-8 ">
+            <input class="form-control" type="text" placeholder="Filter Users...">
+          </div> -->
     </div>
     <br>
     
 
   <div>
-    <ngx-datatable
+    <ngx-datatable 
         #mydatatable
         class="material"
         [headerHeight]="50"
-        [limit]="5"
+        
         [columnMode]="'force'"
         [footerHeight]="50"
         [rowHeight]="'auto'"

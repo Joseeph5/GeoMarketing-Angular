@@ -1,13 +1,21 @@
 body{
     background:#f4f4f4;
   }
-  
+  .mg-icon{
+    margin-right: 10px;
+  }
   /* Navbar */
 .main-color-bg{
   background-color: #3c86e7;
   border-color: #3c86e7;
 }
 
+.affix {
+  position: fixed;
+  width:22%;
+  
+  
+}
 .navbar-default {
     padding-top: 5px;
     background-color: #3c86e7;

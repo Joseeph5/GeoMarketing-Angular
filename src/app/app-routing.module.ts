@@ -4,12 +4,16 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserComponent } from './admin/user/user.component';
 import { MissionsComponent } from './admin/missions/missions.component';
 import { PlanningComponent } from './admin/planning/planning.component';
+import { GroupsComponent } from './admin/groups/groups.component';
+import { CarsComponent } from './admin/cars/cars.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'driver',component:UserComponent},
   {path:'mission',component:MissionsComponent},
-  {path:'planning',component:PlanningComponent}
+  {path:'planning',component:PlanningComponent},
+  {path:'cars',component:CarsComponent},
+  {path:'groups',component:GroupsComponent}
 ];
 
 @NgModule({

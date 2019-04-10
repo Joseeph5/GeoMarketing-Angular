@@ -45,7 +45,7 @@ export class ApiServiceService {
     );
   }
 
-  updateMission(id:any, driver:any): Observable<Driver> {
+  updateMission(id:any, driver:Driver): Observable<Driver> {
     return this.http.put<Driver>(this.UpdateURL+'/'+id, JSON.stringify(driver), this.httpOptions)
     .pipe(
       retry(1),
