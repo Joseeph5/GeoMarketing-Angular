@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { Driver } from 'src/app/shared/Driver';
 
-import { Row } from 'src/app/shared/Row';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -41,7 +40,7 @@ export class UserComponent implements OnInit {
 
     
    console.log('id',this.rows[rowIndex].driver_id);
-   console.log('driver',this.rows[rowIndex][cell]); 
+   console.log('driver',this.rows[rowIndex]); 
 
    this.apiService.updateMission(this.rows[rowIndex].driver_id,this.rows[rowIndex]).subscribe(()=>
    console.log('success'));;

@@ -10,7 +10,7 @@ export class MissionServiceService {
   DataURL = 'http://127.0.0.1:8000/mission';
   UpdateURL='http://127.0.0.1:8000/updatemission';
   DeleteURL='http://127.0.0.1:8000/removemission';
-
+  PostURL='http://127.0.0.1:8000/addmission';
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -58,5 +58,13 @@ export class MissionServiceService {
       retry(1),
       catchError(this.handleError)
     )
+  }
+  postMission(mission:Mission): Observable<Mission> {
+    return this.http.post<Mission>(this.PostURL, JSON.stringify(mission), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+    
   }
 }

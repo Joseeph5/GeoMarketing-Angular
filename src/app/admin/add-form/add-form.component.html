@@ -1,28 +1,28 @@
 <div class="container">
-    <h2>Add Mission</h2>
-    <form class="form-horizontal" [formGroup]="newForm" (ngSubmit)="addMission(newForm.value)" >
+    <h2>Ajouter une mission</h2>
+    <form class="form-horizontal"  (ngSubmit)="addMission()" >
       <div class="form-group">
         <label class="control-label col-sm-2" for="email">date début:</label>
         <div class="col-sm-8">
-          <input type="date" class="form-control" id="email" placeholder="Enter date début" formControlName="date_deb">
+          <input type="date" class="form-control" id="email" placeholder="Enter date début" [(ngModel)]="mission.date_deb" name="date_deb">
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">date fin:</label>
         <div class="col-sm-8">          
-          <input type="date" class="form-control" id="pwd" placeholder="Enter date fin" formControlName="date_fin">
+          <input type="date" class="form-control" id="pwd" placeholder="Enter date fin" [(ngModel)]="mission.date_fin" name="date_fin">
         </div>
       </div>
       <div class="form-group">
           <label class="control-label col-sm-2" for="email">id de chauffeur:</label>
           <div class="col-sm-8">
-            <input type="number" class="form-control" id="email" placeholder="Enter id de chauffeur" formControlName="id_driver">
+            <input type="number" class="form-control" id="email" placeholder="Enter id de chauffeur" >
           </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">id de vehicule:</label>
             <div class="col-sm-8">
-              <input type="number" class="form-control" id="email" placeholder="Enter id de vehicule" formControlName="id_vehicule">
+              <input type="number" class="form-control" id="email" placeholder="Enter id de vehicule" >
             </div>
           </div>
           

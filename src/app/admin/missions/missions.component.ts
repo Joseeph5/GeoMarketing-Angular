@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Mission } from 'src/app/shared/Mission';
 import { MissionServiceService } from 'src/app/services/mission-service.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddFormComponent } from '../add-form/add-form.component';
 @Component({
   selector: 'app-missions',

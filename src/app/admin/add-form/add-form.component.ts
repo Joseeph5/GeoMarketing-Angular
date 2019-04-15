@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MissionServiceService } from 'src/app/services/mission-service.service';
+import { Mission } from 'src/app/shared/Mission';
 
 
 @Component({
@@ -9,22 +11,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddFormComponent implements OnInit {
 
-  newForm: FormGroup;
-  mission:any;
+  // newForm: FormGroup;
+  mission= new Mission;
+
   date_deb:any;    
   date_fin:any;                 
   id_driver:number ;
   id_vehicule:number;
   titleAlert:string = 'This field is required';
   
-  constructor(private fb: FormBuilder) {
-    this.newForm = fb.group({
-      'date_deb': [null, Validators.required],
-      'date_fin': [null, Validators.required],
-      'id_driver': [null, Validators.required],
-      'id_vehicule': [null, Validators.required],
+  constructor(private fb: FormBuilder,public missionservice:MissionServiceService) {
+    
+    // this.newForm = fb.group({
+    //   'date_deb': [null, Validators.required],
+    //   'date_fin': [null, Validators.required],
+    //   'id_driver': [null, Validators.required],
+    //   'id_vehicule': [null, Validators.required],
       
-    });
+    // });
   }
 
   
@@ -32,8 +36,11 @@ export class AddFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  addMission(mission:any){
-    console.log('sssssssssss',mission);
-  }
-
+    addMission(){
+      console.log('sssssssssss',this.mission);
+      this.missionservice.postMission(this.mission).subscribe(()=>
+      console.log('success '));
+    }
 }
+
+

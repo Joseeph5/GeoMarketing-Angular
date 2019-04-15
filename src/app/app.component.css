@@ -11,11 +11,12 @@ body{
 }
 
 .affix {
-  position: fixed;
-  width:22%;
-  
-  
-}
+  top: 20px;
+  width: 300px;
+  }
+  .affix_dash{
+    width: 300px;
+  }
 .navbar-default {
     padding-top: 5px;
     background-color: #3c86e7;
