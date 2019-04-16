@@ -20,7 +20,7 @@ export class MapServiceService {
         marker.bindPopup(value.name.bold()+"</br>"+value.address);
       });
      });
-    const map = L.map('map').setView([36.723, 10.747], 10);
+    const map = L.map('map').setView([36.723, 10.747], 8);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
