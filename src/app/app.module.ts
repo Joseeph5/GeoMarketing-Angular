@@ -23,8 +23,10 @@ import { AddFormComponent } from './admin/add-form/add-form.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { CarsComponent } from './admin/cars/cars.component';
 import { ProductComponent } from './admin/product/product.component';
-import { TrackingComponent } from './admin/tracking/tracking.component'; 
+import { TrackingComponent } from './admin/tracking/tracking.component';
+import { DeleteConfirmDialogComponent } from './Dialog/delete-confirm-dialog/delete-confirm-dialog.component'; 
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,12 +38,15 @@ import { TrackingComponent } from './admin/tracking/tracking.component';
     GroupsComponent,
     CarsComponent,
     ProductComponent,
-    TrackingComponent
+    TrackingComponent,
+    DeleteConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
+    ToastrModule.forRoot(),
     MatSelectModule,
     MatStepperModule,
+    MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
     NgxDatatableModule,
@@ -51,7 +56,7 @@ import { TrackingComponent } from './admin/tracking/tracking.component';
   ],
   exports: [MatButtonModule, MatCheckboxModule,MatDialogModule,MatFormFieldModule],
   providers: [ApiServiceService],
-  entryComponents:[AddFormComponent],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { Driver } from 'src/app/shared/Driver';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +21,8 @@ export class UserComponent implements OnInit {
   rows:Driver[];
   
   
-  constructor(private apiService:ApiServiceService){}
+  constructor(private apiService:ApiServiceService, public dialogServer:DialogService,
+   private toastr: ToastrService){}
 
   ngOnInit(){
     return this.apiService.getData().subscribe(data => {
@@ -47,10 +50,15 @@ export class UserComponent implements OnInit {
 
   }
   
-
+  
   delete(id:any){
+    this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        console.log(res);
+        this.toastr.success('Supprimé avec succès');
     
-    this.apiService.delete(id).subscribe(()=>
-      console.log('delete '+id));
+      }
+    });
   }
 }
