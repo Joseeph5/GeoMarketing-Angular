@@ -1,162 +1,185 @@
-<div class="panel panel-default">
-  <div class="panel-heading main-color-bg">
-    <h3 class="panel-title panel-text" style="color:#ecf0f1;">Les Conducteurs</h3>
-  </div>
-  
-  <div class="panel-body">
-    
-        <div class=" col-md-offset-10">
-            <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
-        </div>   
-           <br>
-  <div>
-    
-          
-    
 
-    
+
+
+
+<div class="col-md-1 ng">
+  <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
+    <a routerLink="/dashboard" class="list-group-item active main-color-bg">
+      <i class="material-icons mg-icon">dashboard </i>
+    </a>
+    <a routerLink="/planning" class="list-group-item"> <i class="material-icons mg-icon">edit </i></a>
+    <a routerLink="/tracking" class="list-group-item"> <i class="material-icons mg-icon">track_changes </i></a>
+    <a routerLink="/mission" class="list-group-item"><i class="material-icons mg-icon">list </i> </a>
+    <a routerLink="/driver" class="list-group-item"><i class="material-icons mg-icon">person</i> </a>
+    <a routerLink="/groups" class="list-group-item"><i class="material-icons mg-icon">group</i> </a>
+    <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
+    <a routerLink="/product" class="list-group-item"><i class="material-icons mg-icon">extension</i></a>
+   
+  </div>
+</div>
+
+<div class="col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading main-color-bg">
+        <h3 class="panel-title panel-text" style="color:#ecf0f1;">Les Conducteurs</h3>
+      </div>
       
-      <ngx-datatable
-          #mydatatable
-          class="material"
-          [headerHeight]="50"
-          [limit]="10"
-          [columnMode]="'force'"
-          [footerHeight]="50"
-          [rowHeight]="'auto'"
-          [rows]="rows">
-          <ngx-datatable-column name="driver_id">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-driver_id'] = true"
-                *ngIf="!editing[rowIndex + '-driver_id']">
-                {{row.driver_id}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'driver_id', rowIndex)"
-                *ngIf="editing[rowIndex+ '-driver_id']"
-                type="text"
-                [value]="value"
-              />
+      <div class="panel-body">
+        
+            <div class=" col-md-offset-10">
+                <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
+            </div>   
+              <br>
+      <div>
+        
               
-            </ng-template>
-            
-          </ngx-datatable-column>
-          <ngx-datatable-column name="cin">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-cin'] = true"
-                *ngIf="!editing[rowIndex + '-cin']">
-                {{row.cin}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'cin', rowIndex)"
-                *ngIf="editing[rowIndex+ '-cin']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="email">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-email'] = true"
-                *ngIf="!editing[rowIndex + '-email']">
-                {{row.email}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'email', rowIndex)"
-                *ngIf="editing[rowIndex+ '-email']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="first_name">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-first_name'] = true"
-                *ngIf="!editing[rowIndex + '-first_name']">
-                {{row.first_name}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'first_name', rowIndex)"
-                *ngIf="editing[rowIndex+ '-first_name']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="last_name">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-last_name'] = true"
-                *ngIf="!editing[rowIndex + '-last_name']">
-                {{row.last_name}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'last_name', rowIndex)"
-                *ngIf="editing[rowIndex+ '-last_name']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="telephone">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-telephone'] = true"
-                *ngIf="!editing[rowIndex + '-telephone']">
-                {{row.telephone}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'telephone', rowIndex)"
-                *ngIf="editing[rowIndex+ '-telephone']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="blood_group">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-              <span
-                title="Double click to edit"
-                (dblclick)="editing[rowIndex + '-blood_group'] = true"
-                *ngIf="!editing[rowIndex + '-blood_group']">
-                {{row.blood_group}}
-              </span>
-              <input
-                autofocus
-                (blur)="updateValue($event, 'blood_group', rowIndex)"
-                *ngIf="editing[rowIndex+ '-blood_group']"
-                type="text"
-                [value]="value"
-              />
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Action" prop="driver_id" [sortable]="false">
-            <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
-              <button class="btn btn-sm btn-danger" (click)="delete(id)">
-                <i class="fa fa-trash"></i> Delete
-              </button>
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
+        
+
+        
+          
+          <ngx-datatable
+              #mydatatable
+              class="material"
+              [headerHeight]="50"
+              [limit]="10"
+              [columnMode]="'force'"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [rows]="rows">
+              <ngx-datatable-column name="driver_id">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-driver_id'] = true"
+                    *ngIf="!editing[rowIndex + '-driver_id']">
+                    {{row.driver_id}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'driver_id', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-driver_id']"
+                    type="text"
+                    [value]="value"
+                  />
+                  
+                </ng-template>
+                
+              </ngx-datatable-column>
+              <ngx-datatable-column name="cin">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-cin'] = true"
+                    *ngIf="!editing[rowIndex + '-cin']">
+                    {{row.cin}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'cin', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-cin']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="email">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-email'] = true"
+                    *ngIf="!editing[rowIndex + '-email']">
+                    {{row.email}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'email', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-email']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="first_name">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-first_name'] = true"
+                    *ngIf="!editing[rowIndex + '-first_name']">
+                    {{row.first_name}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'first_name', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-first_name']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="last_name">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-last_name'] = true"
+                    *ngIf="!editing[rowIndex + '-last_name']">
+                    {{row.last_name}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'last_name', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-last_name']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="telephone">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-telephone'] = true"
+                    *ngIf="!editing[rowIndex + '-telephone']">
+                    {{row.telephone}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'telephone', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-telephone']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="blood_group">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-blood_group'] = true"
+                    *ngIf="!editing[rowIndex + '-blood_group']">
+                    {{row.blood_group}}
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'blood_group', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-blood_group']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Action" prop="driver_id" [sortable]="false">
+                <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+                  <button class="btn btn-sm btn-danger" (click)="delete(id)">
+                    <i class="fa fa-trash"></i> Delete
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
     
  
-</div>
+    </div>
+  </div>  
+
   
 
   

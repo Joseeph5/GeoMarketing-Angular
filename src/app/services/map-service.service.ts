@@ -25,7 +25,45 @@ export class MapServiceService {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    var demoTracks ={
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+          -123.77252789,
+          44.37857221
+        ],
+        [
+          -123.77317087,
+          44.37864694
+        ],
+        [
+          -123.77383407,
+          44.37875853
+        ]
+      ]
+      },
+      "properties": {
+        "time": [1369786338000,
+          1369786340000,
+          1369786342000
+        
+          
+        ]
+      }
+    }
 
+      // Playback options
+    var playbackOptions = {
+      playControl: true,
+      dateControl: true,
+      sliderControl: true     
+  };
+      
+      // Initialize playback
+      var playback = new L.Playback(map, demoTracks, null, playbackOptions); 
+      
     var popup = L.popup();
 
     function onMapClick(e) {
