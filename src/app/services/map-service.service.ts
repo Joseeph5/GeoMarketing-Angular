@@ -69,7 +69,6 @@ export class MapServiceService {
         
       });
      });
-    
 
     var popup = L.popup();
 

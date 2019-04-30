@@ -2,3 +2,24 @@
     background-color: #3c86e7;
     border-color: #3c86e7;
   }
+
+  .affix {
+    top: 20px;
+    width: 60px;
+    padding: 0px;
+      margin: 0px;
+    }
+    .affix_dash{
+      width: 60px;
+      padding: 0px;
+      margin: 0px;
+    }
+  
+  .ng{
+    margin:0px;
+   
+  }
+  .pd{
+    padding: 0px;
+    margin:0px;
+  }

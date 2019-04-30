@@ -7,3 +7,24 @@
     color: #ecf0f1;
     
   }
+  .affix {
+    top: 20px;
+    width: 60px;
+    padding: 0px;
+      margin: 0px;
+    }
+    .affix_dash{
+      width: 60px;
+      padding: 0px;
+      margin: 0px;
+    }
+  
+  .ng{
+    margin:0px;
+   
+  }
+
+  .pd{
+    padding: 0px;
+    margin:0px;
+  }

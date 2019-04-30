@@ -7,6 +7,25 @@
     margin-left: 30px;
 }
 
+
 .pd{
     margin-right: 20px;
 }
+
+.affix {
+    top: 20px;
+    width: 60px;
+    padding: 0px;
+      margin: 0px;
+    }
+    .affix_dash{
+      width: 60px;
+      padding: 0px;
+      margin: 0px;
+    }
+  
+  .ng{
+    margin:0px;
+    
+  }
+
