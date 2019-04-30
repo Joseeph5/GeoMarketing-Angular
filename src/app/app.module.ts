@@ -8,7 +8,7 @@ import { UserComponent } from './admin/user/user.component';
 import { PlanningComponent } from './admin/planning/planning.component';
 import { MissionsComponent } from './admin/missions/missions.component';
 import { ApiServiceService } from './services/api-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +27,9 @@ import { TrackingComponent } from './admin/tracking/tracking.component';
 import { DeleteConfirmDialogComponent } from './Dialog/delete-confirm-dialog/delete-confirm-dialog.component'; 
 
 import { ToastrModule } from 'ngx-toastr';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthorizationService } from './services/authorization.service';
+// import { AuthenticationService } from './services/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +58,12 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,MatFormFieldModule,FormsModule, ReactiveFormsModule
   ],
   exports: [MatButtonModule, MatCheckboxModule,MatDialogModule,MatFormFieldModule],
-  providers: [ApiServiceService],
+  providers: [ApiServiceService,AuthorizationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+  }],
   entryComponents:[AddFormComponent,DeleteConfirmDialogComponent],
   bootstrap: [AppComponent]
 })

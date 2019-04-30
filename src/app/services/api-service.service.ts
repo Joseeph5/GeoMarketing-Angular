@@ -26,6 +26,8 @@ export class ApiServiceService {
  }
 
   constructor( private http: HttpClient) { }
+  
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

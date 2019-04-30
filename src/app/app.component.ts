@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { AuthenticationService } from './services/authentication.service';
+
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +20,22 @@ export class AppComponent implements OnInit{
        }
     }
   title = 'GeoMarketing';
-  username="demo";
-  password="*demo*";
-  constructor(private auth:AuthenticationService) { }
+
+  
+
+  
+  startDate: "2019-04-01T23:00:00.000Z";
+  endDate: "2019-04-16T22:59:00.000Z";
+  constructor(public inter:TokenInterceptorService) { }
 
   ngOnInit(){
-    this.auth.login(this.username,this.password).subscribe(data => {
-      console.log('success',data.token);
-     });
+    
+     
+    
+     
   }
+
+  
+
+  
 }
