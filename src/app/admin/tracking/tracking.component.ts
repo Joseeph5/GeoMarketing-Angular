@@ -4,9 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { TrackingService } from 'src/app/services/tracking.service';
 import { Group } from 'src/app/shared/Group';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Driver } from 'selenium-webdriver/chrome';
-import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
+//import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
 declare let L;
 @Component({
   selector: 'app-tracking',

@@ -35,7 +35,12 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthorizationService } from './services/authorization.service';
 // import { AuthenticationService } from './services/authentication.service';
 
+<<<<<<< HEAD
 import { MissionComponent } from './driver/mission/mission.component';
+=======
+import { MissionnComponent } from './driver/mission/mission.component';
+import { ReportingFormComponent } from './driver/add-form/add-form.component';
+>>>>>>> 331dcacfb00b5e883cadd5e14d4a6d2e0f22ae53
 
 @NgModule({
   declarations: [
@@ -50,7 +55,12 @@ import { MissionComponent } from './driver/mission/mission.component';
     ProductComponent,
     TrackingComponent,
     DeleteConfirmDialogComponent,
+<<<<<<< HEAD
     MissionComponent
+=======
+    MissionnComponent,
+    ReportingFormComponent
+>>>>>>> 331dcacfb00b5e883cadd5e14d4a6d2e0f22ae53
   ],
   imports: [
     BrowserModule,
@@ -76,7 +86,7 @@ import { MissionComponent } from './driver/mission/mission.component';
       useClass: TokenInterceptorService,
       multi: true
   }],
-  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,ReportingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
