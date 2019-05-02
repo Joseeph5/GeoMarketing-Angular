@@ -14,7 +14,7 @@ export interface Mission {
   templateUrl: './mission.component.html',
   styleUrls: ['./mission.component.css']
 })
-export class MissionnComponent implements OnInit {
+export class MissionComponent implements OnInit {
 
   constructor(private missionservice:MissionDriverService,public dialog: MatDialog){
     

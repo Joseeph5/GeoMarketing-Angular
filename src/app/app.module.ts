@@ -35,7 +35,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthorizationService } from './services/authorization.service';
 // import { AuthenticationService } from './services/authentication.service';
 
-import { MissionnComponent } from './driver/mission/mission.component';
+import { MissionComponent } from './driver/mission/mission.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { MissionnComponent } from './driver/mission/mission.component';
     ProductComponent,
     TrackingComponent,
     DeleteConfirmDialogComponent,
-    MissionnComponent
+    MissionComponent
   ],
   imports: [
     BrowserModule,

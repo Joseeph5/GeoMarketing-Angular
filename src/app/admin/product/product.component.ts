@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  drivers=5;
+  fakeArray = new Array(10); 
   constructor() { }
 
   ngOnInit() {
