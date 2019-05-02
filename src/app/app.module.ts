@@ -8,7 +8,7 @@ import { UserComponent } from './admin/user/user.component';
 import { PlanningComponent } from './admin/planning/planning.component';
 import { MissionsComponent } from './admin/missions/missions.component';
 import { ApiServiceService } from './services/api-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +30,14 @@ import { DeleteConfirmDialogComponent } from './Dialog/delete-confirm-dialog/del
 import {MatTableModule} from '@angular/material'
 
 import { ToastrModule } from 'ngx-toastr';
-import { MissionComponent } from './driver/mission/mission.component';
+
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthorizationService } from './services/authorization.service';
+// import { AuthenticationService } from './services/authentication.service';
+
+import { MissionnComponent } from './driver/mission/mission.component';
+import { ReportingFormComponent } from './driver/add-form/add-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,8 @@ import { MissionComponent } from './driver/mission/mission.component';
     ProductComponent,
     TrackingComponent,
     DeleteConfirmDialogComponent,
-    MissionComponent
+    MissionnComponent,
+    ReportingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -64,8 +72,13 @@ import { MissionComponent } from './driver/mission/mission.component';
     
   ],
   exports: [MatButtonModule, MatCheckboxModule,MatDialogModule,MatFormFieldModule],
-  providers: [ApiServiceService],
-  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent],
+  providers: [ApiServiceService,AuthorizationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+  }],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,ReportingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

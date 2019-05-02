@@ -6,6 +6,12 @@
 .mg{
     margin-left: 30px;
 }
+
+
+.pd{
+    margin-right: 20px;
+}
+
 .affix {
     top: 20px;
     width: 60px;
@@ -20,5 +26,6 @@
   
   .ng{
     margin:0px;
-    padding: 0px;
+    
   }
+

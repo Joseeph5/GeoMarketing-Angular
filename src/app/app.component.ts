@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { AuthenticationService } from './services/authentication.service';
+
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthorizationService } from './services/authorization.service';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +21,24 @@ export class AppComponent implements OnInit{
        }
     }
   title = 'GeoMarketing';
+
+
+  
+
+  
+  startDate: "2019-04-01T23:00:00.000Z";
+  endDate: "2019-04-16T22:59:00.000Z";
+  constructor(public inter:TokenInterceptorService, public auth:AuthorizationService) { }
+
+
+    
+     
+    
+     
+
   username="ecoti";
   password="ecoti500p";
 
-  startDate: "2019-04-01T23:00:00.000Z";
-  endDate: "2019-04-16T22:59:00.000Z";
-  constructor(private auth:AuthenticationService) { }
 
   ngOnInit(){
     this.auth.login(this.username,this.password).subscribe(data => {
@@ -32,9 +46,14 @@ export class AppComponent implements OnInit{
       localStorage.setItem('token',data.token)
      });
 
-      this.auth.GetPaths(this.startDate,this.endDate).subscribe(data => {
+    //   this.auth.getPaths(this.startDate,this.endDate).subscribe(data => {
       
-      console.log('success ');
-     });;
+    //   console.log('success ');
+    //  });;
+
   }
+
+  
+
+  
 }

@@ -8,7 +8,7 @@ import { GroupsComponent } from './admin/groups/groups.component';
 import { CarsComponent } from './admin/cars/cars.component';
 import { ProductComponent } from './admin/product/product.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
-import { MissionComponent } from './driver/mission/mission.component';
+import { MissionnComponent } from './driver/mission/mission.component';
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'driver',component:UserComponent},
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'groups',component:GroupsComponent},
   {path:'product',component:ProductComponent},
   {path:'tracking',component:TrackingComponent},
-  {path:'mission',component:MissionComponent}
+  {path:'drivermission',component:MissionnComponent}
 ];
 
 @NgModule({

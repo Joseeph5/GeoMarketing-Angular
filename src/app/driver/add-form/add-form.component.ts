@@ -9,7 +9,7 @@ import { Mission } from 'src/app/shared/Mission';
   templateUrl: './add-form.component.html',
   styleUrls: ['./add-form.component.css']
 })
-export class AddFormComponent implements OnInit {
+export class ReportingFormComponent implements OnInit {
 
   // newForm: FormGroup;
   mission= new Mission;

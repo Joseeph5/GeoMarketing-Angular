@@ -10,27 +10,19 @@ export class MapServiceService {
   PoiData:Group[];
 
   constructor(public trackService:TrackingService) { }
-
+  
   InitMap() {
-
-    this.trackService.getPoiData().subscribe(data => {
-      this.PoiData=data
-      this.PoiData.forEach(function (value) {
-        var marker = L.marker([value.latitude, value.longitude]).addTo(map);
-        marker.bindPopup(value.name.bold()+"</br>"+value.address);
-      });
-     });
-    const map = L.map('map').setView([36.723, 10.747], 8);
+    const map = L.map('map').setView([36.723, 10.747], 7);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    var demoTracks ={
+
+    var demoTracks={
       "type": "Feature",
       "geometry": {
         "type": "MultiPoint",
-        "coordinates": [
-          [
+        "coordinates": [[
           -123.77252789,
           44.37857221
         ],
@@ -41,29 +33,43 @@ export class MapServiceService {
         [
           -123.77383407,
           44.37875853
+        ],
+        [
+          -123.7744676,
+          44.37886305
         ]
-      ]
+]
       },
       "properties": {
         "time": [1369786338000,
           1369786340000,
-          1369786342000
+          1369786342000,
+          1369786344000
         
           
         ]
       }
     }
-
-      // Playback options
+   
+    // Playback options
     var playbackOptions = {
-      playControl: true,
+      playControl: true, 
       dateControl: true,
       sliderControl: true     
-  };
+    };
       
-      // Initialize playback
-      var playback = new L.Playback(map, demoTracks, null, playbackOptions); 
-      
+    // Initialize playback
+    var playback = new L.Playback(map, demoTracks, null, playbackOptions); 
+
+    this.trackService.getPoiData().subscribe(data => {
+      this.PoiData=data
+      this.PoiData.forEach(function (value) {
+        var marker = L.marker([value.latitude, value.longitude]).addTo(map);
+        marker.bindPopup(value.name.bold()+"</br>"+value.address);
+        
+      });
+     });
+
     var popup = L.popup();
 
     function onMapClick(e) {
@@ -75,4 +81,7 @@ export class MapServiceService {
 
     map.on('click', onMapClick);
   }
+
+
+  
 }

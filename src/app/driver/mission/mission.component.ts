@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MissionDriverService} from 'src/app/services/mission-driver.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Mission } from 'src/app/shared/Mission';
-import { AddFormComponent } from '../add-form/add-form.component';
+import { ReportingFormComponent } from '../add-form/add-form.component';
 export interface Mission {
   idmission :number,
   idvehicule: number;
@@ -15,7 +15,7 @@ export interface Mission {
   templateUrl: './mission.component.html',
   styleUrls: ['./mission.component.css']
 })
-export class MissionComponent implements OnInit {
+export class MissionnComponent implements OnInit {
 
   constructor(private missionservice:MissionDriverService,public dialog: MatDialog){
     
@@ -33,7 +33,7 @@ export class MissionComponent implements OnInit {
   
 }
 openDialog(): void {
-  const dialogRef = this.dialog.open(AddFormComponent, {
+  const dialogRef = this.dialog.open(ReportingFormComponent, {
     width: '1000px',
     data: {}
   });
