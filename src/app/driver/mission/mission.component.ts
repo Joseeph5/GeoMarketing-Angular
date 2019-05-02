@@ -8,7 +8,8 @@ export interface Mission {
   idvehicule: number;
   datedeb: number;
   datefin: number;
-  
+  mark:any;
+  matricule :any;
 }
 @Component({
   selector: 'app-mission',
@@ -22,7 +23,7 @@ export class MissionnComponent implements OnInit {
    
   } 
   rows:Mission[];
- displayedColumns: string[] = ['idmission','idvehicule', 'datedeb', 'datefin'];
+ displayedColumns: string[] = ['idmission','idvehicule', 'datedeb', 'datefin','mark'];
 
   ngOnInit() {
     
