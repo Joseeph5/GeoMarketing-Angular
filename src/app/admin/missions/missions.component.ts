@@ -50,6 +50,8 @@ export class MissionsComponent implements OnInit {
     this.missionservice.delete(id).subscribe(()=>
       console.log('delete '+id));
   }
+
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(AddFormComponent, {
       width: '1000px',

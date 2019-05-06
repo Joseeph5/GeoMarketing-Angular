@@ -14,9 +14,27 @@
    
   </div>
 </div>
+
 <p>
   product works!
 </p>
-<ul>
-    <li *ngFor="let book of bookList">{{book}}</li>
-</ul>
+
+<div>
+  <mat-horizontal-stepper>
+      <ul>
+          <li *ngFor="let a of fakeArray; let iteration = index">
+              <mat-step label="Step 1" state="phone">
+                  <p>{{iteration}}</p>
+                 
+                </mat-step>
+        
+          </li>
+         </ul> 
+   
+    
+    </mat-horizontal-stepper>
+</div>
+
+
+
+

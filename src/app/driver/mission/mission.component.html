@@ -10,52 +10,60 @@
  </div>
 <div class="col-md-9">
     <table mat-table [dataSource] = "rows" class = "mat-elevation-z8"> 
-         <ng-container matColumnDef = "idmission">
+             <ng-container matColumnDef = "idmission">
                <th mat-header-cell *matHeaderCellDef> id</th>
                <td mat-cell *matCellDef = "let element"> {{element.idmission}} </td>
             </ng-container>
    
-   <ng-container matColumnDef = "idvehicule">
-      <th mat-header-cell *matHeaderCellDef>vehicule</th>
-      <td mat-cell *matCellDef = "let element"> {{element.idvehicule.mark}} </td>
-   </ng-container>
-   <ng-container matColumnDef = "datedeb">
-      <th mat-header-cell *matHeaderCellDef>date debut</th>
-      <td mat-cell *matCellDef = "let element"> {{element.datedeb}} </td>
-   </ng-container>
-   <ng-container matColumnDef = "datefin">
-      <th mat-header-cell *matHeaderCellDef>date fin</th>
-      <td mat-cell *matCellDef = "let element"> {{element.datefin}} </td>
-   </ng-container>
-   <ng-container matColumnDef = "mark">
-      <th mat-header-cell *matHeaderCellDef> id</th>
-      <td mat-cell *matCellDef = "let element"> {{element.mark}} </td>
-   </ng-container>
-   <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
-   <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
-</table>
-<mat-horizontal-stepper>
-      <mat-step label="Step 1">
-            <div>
-                  <button mat-button >Add</button>
-                  
-                </div>
-      </mat-step>
-      <mat-step label="Step 2">
-            <form [formGroup]="firstFormGroup">
-                  ...
-                </form>
-      </mat-step>
-      <mat-step label="Step 3">
-            Content 3
-      </mat-step>
-      <mat-step label="Step 4">
-            <div class=" col-md-offset-11">
-                  <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
-                </div> 
-      </mat-step>
-    </mat-horizontal-stepper>   
+            <ng-container matColumnDef = "idvehicule">
+                  <th mat-header-cell *matHeaderCellDef>vehicule</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.mark}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "datedeb">
+                  <th mat-header-cell *matHeaderCellDef>date debut</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.date_deb}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "datefin">
+                  <th mat-header-cell *matHeaderCellDef>date fin</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.datefin}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "mark">
+                  <th mat-header-cell *matHeaderCellDef> mark</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.mark}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "matricule">
+                        <th mat-header-cell *matHeaderCellDef> matricule</th>
+                        <td mat-cell *matCellDef = "let element"> {{element.matricule}} </td>
+                  </ng-container>
+            <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+            <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+      </table>
       
+          
+<h3>Les clients à visiter</h3>
+   
+     
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <ul>
+            
+                  <li *ngFor="let a of row; let iteration = index">
+                  <mat-step [label]=a.address state="phone">
+                              <div>
+                        <p>{{a.address}}</p>
+                        <div class=" col-md-offset-11">
+                              <button type="button" class="btn btn-success"  (click)="openDialog()">Reporting</button>
+                        </div> 
+                        </div>
+
+                  </mat-step>
+                  <!-- <p>{{a.point_interest_id}}</p> -->
+                  </li>
+          
+      </ul> 
+         
+          
+</mat-horizontal-stepper>
 </div>
 
     
