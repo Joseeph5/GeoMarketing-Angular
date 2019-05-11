@@ -40,6 +40,7 @@ import { MissionComponent } from './driver/mission/mission.component';
 
 
 import { ReportingFormComponent } from './driver/add-form/add-form.component';
+import { ReportingComponent } from './admin/reporting/reporting.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ReportingFormComponent } from './driver/add-form/add-form.component';
     TrackingComponent,
     DeleteConfirmDialogComponent,
     MissionComponent,
-    ReportingFormComponent
+    ReportingFormComponent,
+    ReportingComponent
 
   ],
   imports: [
