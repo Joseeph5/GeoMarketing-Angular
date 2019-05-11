@@ -43,6 +43,12 @@ import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 
 
 
+
+import { ReportingFormComponent } from './driver/add-form/add-form.component';
+import { ReportingComponent } from './admin/reporting/reporting.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,11 +63,13 @@ import { AddDriverComponent } from './admin/add-driver/add-driver.component';
     TrackingComponent,
     DeleteConfirmDialogComponent,
 
+
     MissionComponent,
-
     DetailsComponent,
-
     AddDriverComponent,
+    ReportingFormComponent,
+    ReportingComponent
+
 
   ],
   imports: [
@@ -88,7 +96,7 @@ import { AddDriverComponent } from './admin/add-driver/add-driver.component';
     MatDatepickerModule,MatNativeDateModule],
   providers: [ApiServiceService,AuthorizationService,
     ],
-  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,AddDriverComponent],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,AddDriverComponent,ReportingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

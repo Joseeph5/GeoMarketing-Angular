@@ -25,7 +25,7 @@ export class MapServiceService {
     
     this.missionservice.getPoiData(id).subscribe(data => {
       this.PoiData=data
-      console.log(this.PoiData)
+    
       this.PoiData.forEach(function (value) {
         var marker = L.marker([value.latitude, value.longitude]).addTo(map);
         marker.bindPopup(value.name.bold()+"</br>"+value.address);

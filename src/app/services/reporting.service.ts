@@ -1,20 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable ,throwError} from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Mission } from '../shared/Mission'
-import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
+import { Reporting} from '../shared/Reporting';
 
+import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class MissionDriverService {
-
-  DataURL = 'http://127.0.0.1:8000/missiondriver';
-  poiDataURL = 'http://127.0.0.1:8000/missiondriverpoi';
-
-  
- 
-
+export class ReportingService {
+  DataURL="http://127.0.0.1:8000/rapport";
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -33,19 +27,10 @@ export class MissionDriverService {
   })
 }  
 constructor(private http: HttpClient) { }
-
-getData(id): Observable<Mission[]>{
-  return this.http.get<Mission[]>(this.DataURL+"/"+id).pipe(
+getData(): Observable<Reporting[]>{
+  return this.http.get<Reporting[]>(this.DataURL).pipe(
     retry(1),
     catchError(this.handleError)
   );
 }
-getPoiData(id): Observable<any[]>{
-  return this.http.get<any[]>(this.poiDataURL+"/"+id).pipe(
-    retry(1),
-    catchError(this.handleError)
-  );
-}
-
-
 }
