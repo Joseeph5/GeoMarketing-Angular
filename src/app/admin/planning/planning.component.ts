@@ -3,6 +3,7 @@ import { MapServiceService } from 'src/app/services/map-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,8 +15,10 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
   }]
 })
 export class PlanningComponent implements OnInit {
-  
-  constructor(public mapService:MapServiceService,public auth:AuthorizationService) {
+  arr :number[][]=new Array();
+  cars:any;
+  constructor(public mapService:MapServiceService,public auth:AuthorizationService,
+    public router:Router) {
     
    }
 
@@ -41,9 +44,22 @@ export class PlanningComponent implements OnInit {
   }
 
   GetPaths(){
-    this.auth.getPaths(this.Authorization).subscribe(data => {
-      console.log('sassssssssssss')
-    });
+   
+    this.router.navigateByUrl("/missions");
+    // this.auth.getPaths().subscribe(data => {
+    //   this.cars= data.coordinates
+      
+    // for(var i=0;i<this.cars.length;i++) {
+    //   this.arr.push([this.cars[i].lat,this.cars[i].lng ])
+      
+    // }
+    // console.log(this.arr );
+     
+    
+      
+     
+      
+    // });
   }
   
 }

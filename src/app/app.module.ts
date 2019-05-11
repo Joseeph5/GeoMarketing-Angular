@@ -8,12 +8,13 @@ import { UserComponent } from './admin/user/user.component';
 import { PlanningComponent } from './admin/planning/planning.component';
 import { MissionsComponent } from './admin/missions/missions.component';
 import { ApiServiceService } from './services/api-service.service';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatStepper, MatStepperModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatSelectModule, MatDatepickerModule,MatNativeDateModule,
+   MatStepperModule,} from '@angular/material';
 
 import { MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,17 +31,17 @@ import { DeleteConfirmDialogComponent } from './Dialog/delete-confirm-dialog/del
 import {MatTableModule} from '@angular/material'
 
 import { ToastrModule } from 'ngx-toastr';
-
-import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthorizationService } from './services/authorization.service';
 // import { AuthenticationService } from './services/authentication.service';
 
-<<<<<<< HEAD
+
 import { MissionComponent } from './driver/mission/mission.component';
-=======
-import { MissionnComponent } from './driver/mission/mission.component';
-import { ReportingFormComponent } from './driver/add-form/add-form.component';
->>>>>>> 331dcacfb00b5e883cadd5e14d4a6d2e0f22ae53
+import { DetailsComponent } from './admin/details/details.component';
+import { AddDriverComponent } from './admin/add-driver/add-driver.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -55,18 +56,22 @@ import { ReportingFormComponent } from './driver/add-form/add-form.component';
     ProductComponent,
     TrackingComponent,
     DeleteConfirmDialogComponent,
-<<<<<<< HEAD
-    MissionComponent
-=======
-    MissionnComponent,
-    ReportingFormComponent
->>>>>>> 331dcacfb00b5e883cadd5e14d4a6d2e0f22ae53
+
+    MissionComponent,
+
+    DetailsComponent,
+
+    AddDriverComponent,
+
   ],
   imports: [
     BrowserModule,
     ToastrModule.forRoot(),
+    
     MatSelectModule,
     MatStepperModule,
+    MatDatepickerModule,MatNativeDateModule,
+   
     MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
@@ -79,14 +84,11 @@ import { ReportingFormComponent } from './driver/add-form/add-form.component';
    
     
   ],
-  exports: [MatButtonModule, MatCheckboxModule,MatDialogModule,MatFormFieldModule],
+  exports: [MatButtonModule, MatCheckboxModule,MatDialogModule,MatFormFieldModule,
+    MatDatepickerModule,MatNativeDateModule],
   providers: [ApiServiceService,AuthorizationService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-  }],
-  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,ReportingFormComponent],
+    ],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,AddDriverComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ export class ApiServiceService {
   DataURL = 'http://127.0.0.1:8000/driver';
   UpdateURL='http://127.0.0.1:8000/updatedriver';
   DeleteURL='http://127.0.0.1:8000/removedriver';
+  AddDriverURL='http://127.0.0.1:8000/adddriver';
   
   handleError(error) {
     let errorMessage = '';
@@ -46,8 +47,16 @@ export class ApiServiceService {
       catchError(this.handleError)
     );
   }
+  addDriver(driver:Driver): Observable<Driver> {
+    return this.http.post<Driver>(this.AddDriverURL, JSON.stringify(driver), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+    
+  }
 
-  updateMission(id:any, driver:Driver): Observable<Driver> {
+  updateDriver(id:any, driver:Driver): Observable<Driver> {
     return this.http.put<Driver>(this.UpdateURL+'/'+id, JSON.stringify(driver), this.httpOptions)
     .pipe(
       retry(1),

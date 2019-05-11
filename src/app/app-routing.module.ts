@@ -9,6 +9,8 @@ import { CarsComponent } from './admin/cars/cars.component';
 import { ProductComponent } from './admin/product/product.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
 import { MissionComponent } from './driver/mission/mission.component';
+import { DetailsComponent } from './admin/details/details.component';
+
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'driver',component:UserComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path:'groups',component:GroupsComponent},
   {path:'product',component:ProductComponent},
   {path:'tracking',component:TrackingComponent},
-  {path:'drivermission',component:MissionComponent}
+  {path:'drivermission/:id',component:MissionComponent},
+  {path:'details',component:DetailsComponent}
 ];
 
 @NgModule({

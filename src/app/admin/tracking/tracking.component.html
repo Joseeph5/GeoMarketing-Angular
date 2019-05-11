@@ -33,20 +33,16 @@
         {{car.vehicule_id}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> 
   
-  <mat-form-field class="mg">
-     <mat-label>Les chauffeurs</mat-label>
-    <mat-select [(ngModel)]="selectedValue3" name="driver" >
-      <mat-option *ngFor="let driver of drivers" [value]="driver.driver_id" >
-        {{driver.driver_id}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  
+  
+  
+  
 
   
   <button type="button" class="btn btn-success mg" (click)="search()">Recherche</button>
- </div> 
+</div> 
 
   <div>
     <mat-horizontal-stepper>

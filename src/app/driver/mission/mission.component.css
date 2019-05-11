@@ -1,3 +1,18 @@
 table {
     width: 100%;
  }
+
+ .ng{
+    margin:0px;
+   
+  }
+  .affix_dash{
+    width: 60px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #map{ 
+    
+    height: 400px; 
+}

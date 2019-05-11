@@ -1,13 +1,4 @@
-.main-color-bg{
-    background-color: #3c86e7;
-    border-color: #3c86e7;
-  }
-
-  .panel-text >h3 {
-    color: #ecf0f1;
-    
-  }
-  .affix {
+.affix {
     top: 20px;
     width: 60px;
     padding: 0px;
@@ -23,5 +14,3 @@
     margin:0px;
    
   }
-
-  

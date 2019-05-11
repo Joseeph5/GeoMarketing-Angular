@@ -1,9 +1,9 @@
 export class Group {
-    groupe_id: number;
+    point_interest_id: number;
     name: string;
+    address:string;
     latitude:number;
     longitude:number;
-    address:string;
     
     
 }

@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient ,HttpHeaders,HttpResponse, HttpParams} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { createAuthorizationHeader } from './header';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
   AuthURL='http://fleet.tn/ws_rimtrack_all/signin';
-  PathsUrl='http://fleet.tn/ws_rimtrack_all/paths/813785';
+  PathsUrl='http://fleet.tn/ws_rimtrack_all/paths/details/813785';
+  intervale = {
+    "startDate": 1555432294000,
+    "endDate": 1555433683000
+  }
+
+     test:any;
   constructor(private http: HttpClient) { }
 
   login(username:string ,password:string){
@@ -14,10 +21,11 @@ export class AuthorizationService {
   }
 
 
-  getPaths(token:string){
+  getPaths(){
     
-    const headers = new HttpHeaders().set('Authorization','sssssss');
-
-    return this.http.post<any>(this.PathsUrl,null,{headers});
+    let headers = createAuthorizationHeader();
+    
+    return this.http.post<any>(this.PathsUrl, this.intervale, {headers : headers});
+    
   }
 }

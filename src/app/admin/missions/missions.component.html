@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 <div class="col-md-1 ng">
     <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
       <a routerLink="/dashboard" class="list-group-item active main-color-bg">
@@ -14,24 +13,8 @@
       <a routerLink="/product" class="list-group-item"><i class="material-icons mg-icon">extension</i></a>
   
     </div>
-=======
+</div>
 
-<div class="col-md-1 ng">
-  <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
-    <a routerLink="/dashboard" class="list-group-item active main-color-bg">
-      <i class="material-icons mg-icon">dashboard </i>
-    </a>
-    <a routerLink="/planning" class="list-group-item"> <i class="material-icons mg-icon">edit </i></a>
-    <a routerLink="/tracking" class="list-group-item"> <i class="material-icons mg-icon">track_changes </i></a>
-    <a routerLink="/missions" class="list-group-item"><i class="material-icons mg-icon">list </i> </a>
-    <a routerLink="/driver" class="list-group-item"><i class="material-icons mg-icon">person</i> </a>
-    <a routerLink="/groups" class="list-group-item"><i class="material-icons mg-icon">group</i> </a>
-    <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
-    <a routerLink="/product" class="list-group-item"><i class="material-icons mg-icon">extension</i></a>
-   
-
->>>>>>> 1a161198bcca8269eb0cd1e92b0c32fd38deeb62
-  </div>
 
 
 <div class="col-md-offset-1 ">
@@ -48,7 +31,7 @@
             
         <br>
         
-          <div class=" col-md-offset-1">
+          <div class=" col-md-offset-0">
             <ngx-datatable 
                 #mydatatable
                 class="material"
@@ -81,7 +64,7 @@
                       title="Double click to edit"
                       (dblclick)="editing[rowIndex + '-datedeb'] = true"
                       *ngIf="!editing[rowIndex + '-datedeb']">
-                      {{row.date_deb}}
+                      {{row.datedeb}}
                     </span>
                     <input
                       autofocus
@@ -147,6 +130,9 @@
                   <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
                     <button class="btn btn-sm btn-danger" (click)="delete(id)">
                       <i class="fa fa-trash"></i> Delete
+                    </button>
+                    <button routerLink="/details" class="btn btn-sm btn-primary rightpos" >
+                      <i class="fa fa-trash"></i> Détails
                     </button>
                   </ng-template>
                 </ngx-datatable-column>

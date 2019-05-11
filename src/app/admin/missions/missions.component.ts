@@ -4,6 +4,11 @@ import { Mission } from 'src/app/shared/Mission';
 import { MissionServiceService } from 'src/app/services/mission-service.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddFormComponent } from '../add-form/add-form.component';
+import { ToastrService } from 'ngx-toastr';
+import { DialogService } from 'src/app/services/dialog.service';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-missions',
   templateUrl: './missions.component.html',
@@ -16,7 +21,9 @@ export class MissionsComponent implements OnInit {
   rows:Mission[];
   
 
-  constructor(private missionservice:MissionServiceService,public dialog: MatDialog){
+  constructor(private missionservice:MissionServiceService,public dialog: MatDialog,
+    public dialogServer:DialogService,
+   private toastr: ToastrService,public router: Router){
    
    
   } 
@@ -46,10 +53,21 @@ export class MissionsComponent implements OnInit {
   
   }
   delete(id:any){
+    this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        this.missionservice.delete(id).subscribe(()=>{
+          this.toastr.success('Supprimé avec succès');
+          this.router.navigateByUrl("/missions");
+          
+        });
+        
+      }
+    });
     
-    this.missionservice.delete(id).subscribe(()=>
-      console.log('delete '+id));
   }
+
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(AddFormComponent, {
       width: '1000px',
@@ -57,7 +75,7 @@ export class MissionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      
       
     });
   }

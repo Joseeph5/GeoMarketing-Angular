@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MissionDriverService} from 'src/app/services/mission-driver.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Mission } from 'src/app/shared/Mission';
-import { ReportingFormComponent } from '../add-form/add-form.component';
+import { MapServiceService } from 'src/app/services/map-service.service';
+import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
+import { ActivatedRoute } from '@angular/router';
 export interface Mission {
   idmission :number,
   idvehicule: number;
@@ -17,30 +19,42 @@ export interface Mission {
 })
 export class MissionComponent implements OnInit {
 
-  constructor(private missionservice:MissionDriverService,public dialog: MatDialog){
+  constructor(private missionservice:MissionDriverService,public dialog: MatDialog,public mapService:MapServiceService,
+    private route: ActivatedRoute){
     
    
   } 
   rows:Mission[];
- displayedColumns: string[] = ['idmission','idvehicule', 'datedeb', 'datefin'];
+  poi:any;
+  driverId:any;
+  displayedColumns: string[] = ['idmission','idvehicule', 'datedeb', 'datefin'];
 
   ngOnInit() {
     
-    return this.missionservice.getData().subscribe(data => {
-      this.rows=data
-      console.log(this.rows)
-  });
-  
-}
-openDialog(): void {
-  const dialogRef = this.dialog.open(ReportingFormComponent, {
-    width: '1000px',
-    data: {}
-  });
+    this.getMissionData();
+    this.getPoiMission();
+    this.mapInit();
+  }
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
+  getMissionData(){
+    this.route.params.subscribe(params => {
+      this.driverId=params['id']
+      this.missionservice.getData(this.driverId).subscribe(data=>{
+        this.rows=data
+      })
+    });
+   
+  }
+
+  mapInit(){
+    this.mapService.InitMap(this.driverId);
     
-  });
-}
+  }
+
+  getPoiMission(){
+    return this.missionservice.getPoiData(this.driverId).subscribe(data => {
+      this.poi=data
+      console.log("ssssssssssssss",this.poi)
+    });
+  } 
 }

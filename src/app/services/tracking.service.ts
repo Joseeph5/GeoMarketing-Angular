@@ -57,7 +57,7 @@ export class TrackingService {
   }
 
   getPoiData(){
-    return this.http.get<Group[]>(this.PoiDataURL).pipe(
+    return this.http.get<any>(this.PoiDataURL).pipe(
       retry(1),
       catchError(this.handleError)
     );

@@ -3,7 +3,8 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 import { Driver } from 'src/app/shared/Driver';
 import { DialogService } from 'src/app/services/dialog.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddDriverComponent } from '../add-driver/add-driver.component';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -22,7 +23,7 @@ export class UserComponent implements OnInit {
   
   
   constructor(private apiService:ApiServiceService, public dialogServer:DialogService,
-   private toastr: ToastrService){}
+   private toastr: ToastrService,public dialog: MatDialog){}
 
   ngOnInit(){
     return this.apiService.getData().subscribe(data => {
@@ -36,17 +37,15 @@ export class UserComponent implements OnInit {
     console.log('inline editing rowIndex', rowIndex)
     this.editing[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
-    //this.rows = [...this.rows];
-
-   //this.user[rowIndex].att1 = this.rows[rowIndex][cell];
-   console.log('UPDATED!', this.rows[rowIndex][cell]);
+    
+    console.log('UPDATED!', this.rows[rowIndex][cell]);
 
     
-   console.log('id',this.rows[rowIndex].driver_id);
-   console.log('driver',this.rows[rowIndex]); 
+    console.log('id',this.rows[rowIndex].driver_id);
+    console.log('driver',this.rows[rowIndex]); 
 
-   this.apiService.updateMission(this.rows[rowIndex].driver_id,this.rows[rowIndex]).subscribe(()=>
-   console.log('success'));;
+    this.apiService.updateDriver(this.rows[rowIndex].driver_id,this.rows[rowIndex]).subscribe(()=>
+    console.log('success'));;
 
   }
   
@@ -55,10 +54,24 @@ export class UserComponent implements OnInit {
     this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
     .afterClosed().subscribe(res =>{
       if(res){
-        console.log(res);
-        this.toastr.success('Supprimé avec succès');
+        this.apiService.delete(id).subscribe(()=>{
+          this.toastr.success('Supprimé avec succès');
+        });
+        
+      } 
+    });
     
-      }
+  }
+
+  openDialogDriver(): void {
+    const dialogRef = this.dialog.open(AddDriverComponent, {
+      width: '1000px',
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
     });
   }
 }

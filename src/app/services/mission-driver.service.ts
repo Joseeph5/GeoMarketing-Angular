@@ -8,8 +8,8 @@ import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
   providedIn: 'root'
 })
 export class MissionDriverService {
-  DataURL = 'http://127.0.0.1:8000/driver/14/mission';
- 
+  DataURL = 'http://127.0.0.1:8000/missiondriver';
+  poiDataURL = 'http://127.0.0.1:8000/missiondriverpoi';
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -28,8 +28,15 @@ export class MissionDriverService {
   })
 }  
 constructor(private http: HttpClient) { }
-getData(): Observable<Mission[]>{
-  return this.http.get<Mission[]>(this.DataURL).pipe(
+
+getData(id): Observable<Mission[]>{
+  return this.http.get<Mission[]>(this.DataURL+"/"+id).pipe(
+    retry(1),
+    catchError(this.handleError)
+  );
+}
+getPoiData(id): Observable<any[]>{
+  return this.http.get<any[]>(this.poiDataURL+"/"+id).pipe(
     retry(1),
     catchError(this.handleError)
   );

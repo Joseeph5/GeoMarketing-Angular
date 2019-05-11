@@ -1,58 +1,75 @@
 
-<div class="col-md-1 ng"> 
-   <div class="list-group affix_dash " (scroll)="onWindowScroll($event);" id="sidebar">
-     
-     <a routerLink="/mission" class="list-group-item"> <i class="material-icons mg-icon">edit </i></a>
-     <a routerLink="/user" class="list-group-item"> <i class="material-icons mg-icon">track_changes </i></a>
-     
-   </div>
+
  
- </div>
-<div class="col-md-9">
+
+<div class="col-md-12">
     <table mat-table [dataSource] = "rows" class = "mat-elevation-z8"> 
          <ng-container matColumnDef = "idmission">
                <th mat-header-cell *matHeaderCellDef> id</th>
                <td mat-cell *matCellDef = "let element"> {{element.idmission}} </td>
             </ng-container>
    
-   <ng-container matColumnDef = "idvehicule">
-      <th mat-header-cell *matHeaderCellDef>vehicule</th>
-      <td mat-cell *matCellDef = "let element"> {{element.idvehicule.mark}} </td>
-   </ng-container>
-   <ng-container matColumnDef = "datedeb">
-      <th mat-header-cell *matHeaderCellDef>date debut</th>
-      <td mat-cell *matCellDef = "let element"> {{element.datedeb}} </td>
-   </ng-container>
-   <ng-container matColumnDef = "datefin">
-      <th mat-header-cell *matHeaderCellDef>date fin</th>
-      <td mat-cell *matCellDef = "let element"> {{element.datefin}} </td>
-   </ng-container>
-  
-   <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
-   <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
-</table>
-<mat-horizontal-stepper>
-      <mat-step label="Step 1">
-            <div>
-                  <button mat-button >Add</button>
+            <ng-container matColumnDef = "idvehicule">
+                  <th mat-header-cell *matHeaderCellDef>vehicule</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.idvehicule}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "datedeb">
+                  <th mat-header-cell *matHeaderCellDef>date debut</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.dateDeb}} </td>
+            </ng-container>
+            <ng-container matColumnDef = "datefin">
+                  <th mat-header-cell *matHeaderCellDef>date fin</th>
+                  <td mat-cell *matCellDef = "let element"> {{element.date_fin}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+            <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div>
+            <mat-horizontal-stepper>
+                <ul>
+                    <li *ngFor="let a of poi; let iteration = index">
+                        <mat-step label="Step 1" state="phone">
+                            <p>{{a.name}}</p>
+                            
+                              <div class=" col-md-offset-11">
+                               <button type="button" class="btn btn-success"  (click)="openDialog()">Rapport</button>
+                              
+                              </div>
+                          </mat-step>
                   
-                </div>
-      </mat-step>
-      <mat-step label="Step 2">
-            <form [formGroup]="firstFormGroup">
-                  ...
-                </form>
-      </mat-step>
-      <mat-step label="Step 3">
-            Content 3
-      </mat-step>
-      <mat-step label="Step 4">
-            <div class=" col-md-offset-11">
-                  <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
-                </div> 
-      </mat-step>
-    </mat-horizontal-stepper>   
+                    </li>
+                   </ul> 
+             
+              
+              </mat-horizontal-stepper>
+          </div>
+      <!-- <mat-horizontal-stepper>
+            <mat-step label="Step 1">
+                  <div>
+                        <button mat-button >Add</button>
+                        
+                  </div>
+            </mat-step>
+            <mat-step label="Step 2">
+                  
+            </mat-step>
+            <mat-step label="Step 3">
+                  Content 3
+            </mat-step>
+            <mat-step label="Step 4">
+                  <div class=" col-md-offset-11">
+                        <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
+                  </div> 
+            </mat-step>
+    </mat-horizontal-stepper>    -->
       
+
+
+
+<div id="map">
+
 </div>
 
-    
+</div>  
