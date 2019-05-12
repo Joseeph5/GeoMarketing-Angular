@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Mission } from 'src/app/shared/Mission';
 
 import { MapServiceService } from 'src/app/services/map-service.service';
-import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
+//import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
 import { ActivatedRoute } from '@angular/router';
 
 import { ReportingFormComponent } from '../add-form/add-form.component';

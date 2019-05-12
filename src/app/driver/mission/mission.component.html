@@ -39,25 +39,28 @@
       <h3>Les clients à visiter</h3>
 </div>
       <div>
-            <mat-horizontal-stepper>
-                <ul>
-                    <li *ngFor="let a of poi; let iteration = index">
-                        <mat-step label="Step 1" state="phone">
-                            <p>{{a.name}}</p>
-                            
-                              <div class=" col-md-offset-11">
-                               <button type="button" class="btn btn-success"  (click)="openDialog(a.name)">Rapport</button>
-                              
-                              </div>
-                          </mat-step>
-                  
-                    </li>
-                   </ul> 
-             
-              
-              </mat-horizontal-stepper>
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                  <ul>
+                        
+                              <li *ngFor="let a of poi; let iteration = index">
+                              <mat-step [label]=a.address state="phone">
+                                          <div>
+                                    <p>{{a.address}}</p>
+                                    <div class=" col-md-offset-11">
+                                          <button type="button" class="btn btn-success"  (click)="openDialog()">Reporting</button>
+                                    </div> 
+                                    </div>
+            
+                              </mat-step>
+                              <p>{{a.point_interest_id}}</p>
+                              </li>
+                      
+                  </ul> 
+                     
+                      
+            </mat-horizontal-stepper>  
        </div>
-     
+       
       
 
 
