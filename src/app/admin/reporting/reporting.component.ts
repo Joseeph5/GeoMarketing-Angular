@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportingService } from 'src/app/services/reporting.service';
-//import { Reporting } from 'src/app/shared/Reporting';
+import { ActivatedRoute } from '@angular/router';
+
 
 export class Reporting {
   idrapport: number;
@@ -17,16 +18,24 @@ export class Reporting {
 })
 
 export class ReportingComponent implements OnInit {
-  
-  constructor(private reportingservice:ReportingService) { }
+  driverId:any;
+  constructor(private reportingservice:ReportingService,public route:ActivatedRoute) { }
 
   rows:Reporting[];
   displayedColumns: string[] = ['idrapport' , 'facing' ];
   ngOnInit() {
-    return this.reportingservice.getData().subscribe(data => {
-      this.rows=data
-      console.log(this.rows)
-     });
+
+    
+  }
+
+  getReportingData(){
+    this.route.params.subscribe(params => {
+      this.driverId=params['id']
+      this.reportingservice.getData(this.driverId).subscribe(data=>{
+        this.rows=data
+      })
+    });
+   
   }
 
 }

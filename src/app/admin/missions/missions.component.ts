@@ -79,5 +79,12 @@ export class MissionsComponent implements OnInit {
       
     });
   }
+
+  navigateToReportion(id:any){
+
+    
+    console.log(id);
+    this.router.navigateByUrl('/reporting/'+id);
+  }
   
 }

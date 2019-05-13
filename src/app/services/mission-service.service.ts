@@ -25,7 +25,7 @@ export class MissionServiceService {
  }
  httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Accept': 'application/json'
   })
 }  
   constructor(private http: HttpClient) { }
@@ -44,7 +44,7 @@ export class MissionServiceService {
   }
 
   updateMission(id:any, mission:Mission): Observable<Mission> {
-    return this.http.put<Mission>(this.UpdateURL+'/'+id, JSON.stringify(mission), this.httpOptions)
+    return this.http.put<Mission>(this.UpdateURL+'/'+id, JSON.stringify(mission))
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -60,8 +60,8 @@ export class MissionServiceService {
     )
   }
   
-  postMission(mission:Mission): Observable<Mission> {
-    return this.http.post<Mission>(this.PostURL, JSON.stringify(mission), this.httpOptions)
+  addMission(mission:Mission): Observable<Mission> {
+    return this.http.post<Mission>(this.PostURL,mission)
     .pipe(
       retry(1),
       catchError(this.handleError)

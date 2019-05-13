@@ -31,7 +31,7 @@ export class ApiServiceService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Accept': 'application/json'
     })
   }  
   getData(): Observable<Driver[]>{
@@ -48,7 +48,8 @@ export class ApiServiceService {
     );
   }
   addDriver(driver:Driver): Observable<Driver> {
-    return this.http.post<Driver>(this.AddDriverURL, JSON.stringify(driver), this.httpOptions)
+    let headers = new HttpHeaders ({"Content-Type" : "application/json"});
+    return this.http.post<Driver>(this.AddDriverURL, JSON.stringify(driver))
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -57,7 +58,7 @@ export class ApiServiceService {
   }
 
   updateDriver(id:any, driver:Driver): Observable<Driver> {
-    return this.http.put<Driver>(this.UpdateURL+'/'+id, JSON.stringify(driver), this.httpOptions)
+    return this.http.put<Driver>(this.UpdateURL+'/'+id, driver)
     .pipe(
       retry(1),
       catchError(this.handleError)

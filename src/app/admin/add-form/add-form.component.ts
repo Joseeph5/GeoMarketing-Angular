@@ -13,19 +13,20 @@ import { Group } from 'src/app/shared/Group';
 })
 export class AddFormComponent implements OnInit {
 
-  // newForm: FormGroup;
+  
   mission= new Mission;
 
-  date_deb:any;    
-  date_fin:any;                 
-  id_driver:number ;
-  id_vehicule:number;
-  titleAlert:string = 'This field is required';
+  // date_deb:any;    
+  // date_fin:any;                 
+  // id_driver:number ;
+  // id_vehicule:number;
+  // titleAlert:string = 'This field is required';
 
   toppings = new FormControl();
   test:any;
   arr:any[] ;
   toppingList :number[]=new Array();
+
   constructor(private fb: FormBuilder,public missionservice:MissionServiceService,
     public trackService:TrackingService) {
     
@@ -46,10 +47,12 @@ export class AddFormComponent implements OnInit {
   }
 
   addMission(){
-      console.log('sssssssssss',this.toppings.value);
+     // console.log('sssssssssss',this.toppings.value);
 
-      // this.missionservice.postMission(this.mission).subscribe(()=>
-      // console.log('success '));
+      this.missionservice.addMission(this.mission).subscribe(()=>
+      console.log('sssssssssss',this.mission));
+
+      
     }
 }
 

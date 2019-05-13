@@ -15,8 +15,10 @@ export class AddDriverComponent implements OnInit {
   }
 
   addDriver(){
+    console.log('success ',JSON.stringify(this.driver));
     this.apiService.addDriver(this.driver).subscribe(()=>
     console.log('success '));
+    
     
   }
 }

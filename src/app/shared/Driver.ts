@@ -1,6 +1,7 @@
 export class Driver {
     driver_id: number;
     cin:number;
+    code:number;
     email:string;
     first_name:string;
     last_name:string;

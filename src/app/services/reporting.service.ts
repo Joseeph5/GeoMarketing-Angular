@@ -27,7 +27,8 @@ export class ReportingService {
   })
 }  
 constructor(private http: HttpClient) { }
-getData(): Observable<Reporting[]>{
+
+getData(id:any): Observable<Reporting[]>{
   return this.http.get<Reporting[]>(this.DataURL).pipe(
     retry(1),
     catchError(this.handleError)

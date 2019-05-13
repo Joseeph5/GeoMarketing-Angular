@@ -11,7 +11,8 @@ declare let L;
 })
 export class MapServiceService {
   PoiData:Group[];
-  arr :number[][]=new Array();
+  arr :any[][]=new Array();
+  arr2:any[]=new Array();
   cars:any;
   constructor(public trackService:TrackingService,private missionservice:MissionDriverService,
     public auth:AuthorizationService) { }
@@ -25,12 +26,14 @@ export class MapServiceService {
     
     this.missionservice.getPoiData(id).subscribe(data => {
       this.PoiData=data
-    
+      console.log('zzzzzzzzzzz',this.PoiData)
+
       this.PoiData.forEach(function (value) {
+
         var marker = L.marker([value.latitude, value.longitude]).addTo(map);
         marker.bindPopup(value.name.bold()+"</br>"+value.address);
         
-      });
+        });
      });
 
     
@@ -60,11 +63,12 @@ export class MapServiceService {
     this.auth.getPaths().subscribe(data => {
       this.cars= data.coordinates
       
-    for(var i=0;i<this.cars.length;i++) {
+    for(var i=0;i<8;i++) {
       this.arr.push([this.cars[i].lat,this.cars[i].lng ])
-      
+      this.arr2.push([this.cars[i].date])
     }
     console.log('ssssss',this.arr );
+    console.log('aaaaaa',this.arr2 );
   });
     var demoTracks={
       "type": "Feature",
@@ -89,6 +93,7 @@ export class MapServiceService {
         ]
       },
       "properties": {
+        "path_options" : { "color" : "red" },
         "time": [1369786338000,
           1369786340000,
           1369786342000,
@@ -108,11 +113,13 @@ export class MapServiceService {
     var playbackOptions = {
       playControl: true, 
       dateControl: true,
-      sliderControl: true     
+      sliderControl: true
+         
     };
       
     // Initialize playback
     var playback = new L.Playback(map, demoTracks, null, playbackOptions); 
+    
   }
   
 }

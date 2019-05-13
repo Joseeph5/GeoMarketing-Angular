@@ -38,7 +38,7 @@ export class ReportingFormComponent implements OnInit {
 
     addMission(){
       console.log('sssssssssss',this.mission);
-      this.missionservice.postMission(this.mission).subscribe(()=>
+      this.missionservice.addMission(this.mission).subscribe(()=>
       console.log('success '));
     }
 }

@@ -1,9 +1,10 @@
 export class Mission {
     idmission: number;
-    date_deb: string;
-    date_fin:string;
-    iddriver:number;
-    idvehicule:number;
+    datedeb: string;
+    datefin:string;
+    firstname:String;
+    lastname:String;
+    matricule:String
     
 }
 

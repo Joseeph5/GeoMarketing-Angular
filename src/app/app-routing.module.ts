@@ -27,7 +27,7 @@ const routes: Routes = [
 
   {path:'drivermission/:id',component:MissionComponent},
   {path:'details',component:DetailsComponent},
-  {path:'reporting',component:ReportingComponent}
+  {path:'reporting/:id',component:ReportingComponent}
 
 ];
 
