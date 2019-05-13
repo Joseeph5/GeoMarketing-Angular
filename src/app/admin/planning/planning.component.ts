@@ -4,7 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { Router } from '@angular/router';
-
+import { PlanningService } from 'src/app/services/planning.service';
+import { Planning } from 'src/app/shared/Planning';
 
 @Component({
   selector: 'app-planning',
@@ -18,7 +19,8 @@ export class PlanningComponent implements OnInit {
   arr :number[][]=new Array();
   cars:any;
   constructor(public mapService:MapServiceService,public auth:AuthorizationService,
-    public router:Router) {
+    public router:Router,
+    private planningservice:PlanningService) {
     
    }
 
@@ -28,10 +30,15 @@ export class PlanningComponent implements OnInit {
   startDate: "2019-04-01T23:00:00.000Z";
   endDate: "2019-04-16T22:59:00.000Z";
   Authorization:any;
+ 
+ 
+  rows:Planning[];
+  displayedColumns: string[] = ['idplanification'];
   ngOnInit() {
-
-  
-    
+    return this.planningservice.getData().subscribe(data => {
+      this.rows=data
+      console.log(this.rows)
+     });
   }
 
   AuthMethod(){
