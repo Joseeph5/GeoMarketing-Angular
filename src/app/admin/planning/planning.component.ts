@@ -31,7 +31,7 @@ export class PlanningComponent implements OnInit {
   endDate: "2019-04-16T22:59:00.000Z";
   Authorization:any;
  
- 
+ row:string[]=['1','2'];
   rows:Planning[];
   displayedColumns: string[] = ['idplanification'];
   ngOnInit() {

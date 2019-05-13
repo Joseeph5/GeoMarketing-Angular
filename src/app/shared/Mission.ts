@@ -4,7 +4,9 @@ export class Mission {
     datefin:string;
     firstname:String;
     lastname:String;
-    matricule:String
+    matricule:String;
+
+    pois:string[];
     
 }
 

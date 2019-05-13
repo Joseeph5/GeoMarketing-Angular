@@ -16,16 +16,11 @@ export class AddFormComponent implements OnInit {
   
   mission= new Mission;
 
-  // date_deb:any;    
-  // date_fin:any;                 
-  // id_driver:number ;
-  // id_vehicule:number;
-  // titleAlert:string = 'This field is required';
-
-  toppings = new FormControl();
+  
+  pois = new FormControl();
   test:any;
   arr:any[] ;
-  toppingList :number[]=new Array();
+  poiList :number[]=new Array();
 
   constructor(private fb: FormBuilder,public missionservice:MissionServiceService,
     public trackService:TrackingService) {
@@ -40,14 +35,15 @@ export class AddFormComponent implements OnInit {
       this.arr=data
       
       for(var i=0;i<this.arr.length;i++) {
-        this.toppingList.push(this.arr[i].name)
+        this.poiList.push(this.arr[i].name)
         
       } 
     });
   }
 
   addMission(){
-     // console.log('sssssssssss',this.toppings.value);
+    this.mission.pois=this.pois.value;
+      console.log('sssssssssss',this.mission);
 
       this.missionservice.addMission(this.mission).subscribe(()=>
       console.log('sssssssssss',this.mission));
