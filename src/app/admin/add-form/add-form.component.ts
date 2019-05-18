@@ -20,6 +20,7 @@ export class AddFormComponent implements OnInit {
   
   mission= new Mission;
 
+
   toppings = new FormControl();
   driverSelected :string;
   carsSelected :string;
@@ -30,6 +31,7 @@ export class AddFormComponent implements OnInit {
   toppingPoi :number[]=new Array();
   toppingDrivers :string[]=new Array();
   toppingCars :String[]=new Array();
+
 
   constructor(private fb: FormBuilder,public missionservice:MissionServiceService,private toastr: ToastrService,
     public trackService:TrackingService,public dialogServer:DialogService,private apiService:ApiServiceService,
@@ -70,13 +72,19 @@ export class AddFormComponent implements OnInit {
       this.arr=data
       
       for(var i=0;i<this.arr.length;i++) {
+
         this.toppingPoi.push(this.arr[i].name)
+
         
       } 
     });
   }
 
   addMission(){
+
+    this.mission.pois=this.toppings.value;
+      console.log('sssssssssss',this.mission);
+
 
     console.log('driiiiiiver',this.driverSelected)
     console.log('carrrrrrrrrrrrrrrs',this.carsSelected)

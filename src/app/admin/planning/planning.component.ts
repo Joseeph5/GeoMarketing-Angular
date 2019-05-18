@@ -26,16 +26,21 @@ export class PlanningComponent implements OnInit {
   startDate: "2019-04-01T23:00:00.000Z";
   endDate: "2019-04-16T22:59:00.000Z";
   Authorization:any;
-
- rows:Planning[];
- displayedColumns: string[] = ['idplanification'];
+  row:string[]=['1','2'];
+  rows:Planning[];
+  displayedColumns: string[] = ['idplanification'];
   constructor(public mapService:MapServiceService,public auth:AuthorizationService,
     public router:Router,public dialog: MatDialog,
     private planningservice:PlanningService) {
     
    }
 
+
+
+ 
+
   
+
   ngOnInit() {
     // return this.planningservice.getData().subscribe(data => {
     //   this.rows=data

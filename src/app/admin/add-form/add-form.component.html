@@ -39,6 +39,7 @@
       </mat-form-field>
     </div>
 
+<<<<<<< HEAD
     <div class="form-group">
       <label class="control-label col-sm-2 pd">Les points d'interet: </label>
       <mat-form-field>
@@ -54,3 +55,54 @@
     <button type="submit" class="btn btn-success">Ajouter</button>
   </form>
 </div>
+=======
+  <div class="container">
+    <form class="form-horizontal"  (ngSubmit)="addMission()"> 
+        <h2>Ajouter une mission</h2>
+      
+        <div class="form-group">
+          <label class="control-label col-sm-2" >date début:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="email" placeholder="Enter date début" [(ngModel)]="mission.date_deb" name="date_deb">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" >date fin:</label>
+          <div class="col-sm-8">          
+            <input type="text" class="form-control" id="pwd" placeholder="Enter date fin" [(ngModel)]="mission.date_fin" name="date_fin">
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" >Nome du conducteur</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="email" placeholder="Enter id de chauffeur" [(ngModel)]="mission.firstname" name="firstname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" >prenom du conducteur</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="email" placeholder="Enter id de chauffeur" [(ngModel)]="mission.lastname" name="lastname">
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-2" >Matricule:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="email" placeholder="Enter id de vehicule" [(ngModel)]="mission.matricule" name="matricule">
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2 pd" >Les points d'interet: </label>
+            <mat-form-field>
+                <mat-label>Toppings</mat-label>
+                <mat-select [formControl]="pois" multiple>
+                  <mat-option *ngFor="let poi of poiList" [value]="poi">{{poi}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+      
+      
+     
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+>>>>>>> 70b40284648a31a2d8889dd72bb90280958487a7
