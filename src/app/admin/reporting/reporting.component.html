@@ -10,16 +10,72 @@
       <a routerLink="/driver" class="list-group-item"><i class="material-icons mg-icon">person</i> </a>
       <a routerLink="/groups" class="list-group-item"><i class="material-icons mg-icon">group</i> </a>
       <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
-      <a routerLink="/product" class="list-group-item"><i class="material-icons mg-icon">extension</i></a>
+      
      
     </div>
-  </div>
-<table mat-table [dataSource] = "rows" class = "mat-elevation-z8"> 
-  <ng-container matColumnDef = "idrapport">
-    <th mat-header-cell *matHeaderCellDef> id</th>
-    <td mat-cell *matCellDef = "let element"> {{element.idrapport}} </td>
- </ng-container>
+</div>
+<div class="col-md-10">
+<ul>
+  <h2>
+    Rapport de mission {{missionId}}
+    
+  </h2>     
+  <br>         
+  <li *ngFor="let ts of pois; let iteration = index">
+    <div class="">
+      <h4>
+          Rapport de   {{ts.point_interest_id}}        
+      </h4>
+        <ngx-datatable
+          class='material'
+          [rows]='rows'
+          [limit]="10"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          
+          >
+          <ngx-datatable-column name="idrapport" >
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+              <span>{{row.idrapport}}</span>
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <ngx-datatable-column name="date">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                <span>{{row.date}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="produit">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                <span>{{row.date}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="référence">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                <span>{{row.date}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="quantitié">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                <span>{{row.date}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="face">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                <span>{{row.date}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+          
+          
+        </ngx-datatable>
+  
+     </div>
+     <br>
+  
+  </li>
 
- <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
-  <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
-</table>
+</ul> 
+</div>
+

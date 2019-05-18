@@ -1,8 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MissionServiceService } from 'src/app/services/mission-service.service';
-import { Mission } from 'src/app/shared/Mission';
-
+import { Reporting } from 'src/app/shared/Reporting';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-add-form',
@@ -12,23 +12,16 @@ import { Mission } from 'src/app/shared/Mission';
 export class ReportingFormComponent implements OnInit {
 
   // newForm: FormGroup;
-  mission= new Mission;
+  reporting= new Reporting;
 
-  date_deb:any;    
-  date_fin:any;                 
-  id_driver:number ;
-  id_vehicule:number;
-  titleAlert:string = 'This field is required';
   
-  constructor(private fb: FormBuilder,public missionservice:MissionServiceService) {
+  
+  constructor(public dialogRef: MatDialogRef<ReportingFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     
-    // this.newForm = fb.group({
-    //   'date_deb': [null, Validators.required],
-    //   'date_fin': [null, Validators.required],
-    //   'id_driver': [null, Validators.required],
-    //   'id_vehicule': [null, Validators.required],
-      
-    // });
+    public missionservice:MissionServiceService) {
+    
+  
   }
 
   
@@ -36,10 +29,8 @@ export class ReportingFormComponent implements OnInit {
   ngOnInit() {
   }
 
-    addMission(){
-      console.log('sssssssssss',this.mission);
-      this.missionservice.addMission(this.mission).subscribe(()=>
-      console.log('success '));
+    addRapport(){
+      console.log(this.data.id+"  ",this.reporting)
     }
 }
 

@@ -6,6 +6,10 @@ import { FormControl} from '@angular/forms';
 import { TrackingService } from 'src/app/services/tracking.service';
 
 import { Group } from 'src/app/shared/Group';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ToastrService } from 'ngx-toastr';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { VehiculeService } from 'src/app/services/vehicule.service';
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
@@ -16,19 +20,20 @@ export class AddFormComponent implements OnInit {
   
   mission= new Mission;
 
-  // date_deb:any;    
-  // date_fin:any;                 
-  // id_driver:number ;
-  // id_vehicule:number;
-  // titleAlert:string = 'This field is required';
-
   toppings = new FormControl();
+  driverSelected :string;
+  carsSelected :string;
   test:any;
   arr:any[] ;
-  toppingList :number[]=new Array();
+  dirverList:any;
+  carsList:any;
+  toppingPoi :number[]=new Array();
+  toppingDrivers :string[]=new Array();
+  toppingCars :String[]=new Array();
 
-  constructor(private fb: FormBuilder,public missionservice:MissionServiceService,
-    public trackService:TrackingService) {
+  constructor(private fb: FormBuilder,public missionservice:MissionServiceService,private toastr: ToastrService,
+    public trackService:TrackingService,public dialogServer:DialogService,private apiService:ApiServiceService,
+    public vehiculeService:VehiculeService) {
     
   
   }
@@ -36,24 +41,54 @@ export class AddFormComponent implements OnInit {
   
 
   ngOnInit() {
+    this.getDrivers();
+    this.getCars();
+    this.getPoi();
+  }
+  getDrivers(){
+    return this.apiService.getData().subscribe(data => {
+      this.dirverList=data
+      for(var i=0;i<this.dirverList.length;i++) {
+        this.toppingDrivers.push(this.dirverList[i].first_name+" "+this.dirverList[i].last_name)
+        
+      } 
+     
+     });
+  }
+  getCars(){
+    return this.vehiculeService.getData().subscribe(data => {
+      this.carsList=data
+      for(var i=0;i<this.carsList.length;i++) {
+        this.toppingCars.push(this.carsList[i].mark+" "+this.carsList[i].matricule)
+        
+      } 
+     
+     });
+  }
+  getPoi(){
     this.trackService.getPoiData().subscribe(data=>{
       this.arr=data
       
       for(var i=0;i<this.arr.length;i++) {
-        this.toppingList.push(this.arr[i].name)
+        this.toppingPoi.push(this.arr[i].name)
         
       } 
     });
   }
 
   addMission(){
-     // console.log('sssssssssss',this.toppings.value);
 
-      this.missionservice.addMission(this.mission).subscribe(()=>
-      console.log('sssssssssss',this.mission));
+    console.log('driiiiiiver',this.driverSelected)
+    console.log('carrrrrrrrrrrrrrrs',this.carsSelected)
+    console.log('poooooooi',this.toppings.value)
+    //  this.mission.pois=this.toppings.value;
 
-      
-    }
+    //   this.missionservice.addMission(this.mission).subscribe(()=>{
+    //       console.log('sssssssssss',this.mission)
+    //       this.toastr.success('Ajouter avec succès');
+    //       });
+         
+       }
 }
 
 

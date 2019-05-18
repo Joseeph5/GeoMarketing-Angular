@@ -14,7 +14,7 @@ export class TrackingService {
   GroupIdURL = 'http://127.0.0.1:8000/groupe';
   carIdURL = 'http://127.0.0.1:8000/vehicule/13';
 
-  test='http://127.0.0.1:8000/planningmission';
+  test='http://127.0.0.1:8000/device';
 
   UserURL:'http://fleet.tn/ws_rimtrack_all/signin';
 
@@ -49,8 +49,8 @@ export class TrackingService {
       catchError(this.handleError)
     );
   }
-  getDriversId(id:any): Observable<Driver[]>{
-    return this.http.get<Driver[]>(this.test+'/'+id).pipe(
+  getDeviceId(id:any): Observable<any[]>{
+    return this.http.get<any[]>(this.test+'/'+id).pipe(
       retry(1),
       catchError(this.handleError)
     );

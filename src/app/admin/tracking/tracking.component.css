@@ -1,6 +1,6 @@
 #map{ 
     margin-top:0px;
-    height: 450px; 
+    height: 850px; 
 }
 
 .mg{
@@ -22,3 +22,24 @@
     margin:0px;
    
   }
+  #inner {
+    overflow: hidden;
+    
+  }
+  
+  .child {
+    float: left;
+    margin-left: 20px;
+    width: 100px;
+    height: 500px;
+  }
+  .child2 {
+    float: left;
+    width: 2000px;
+    
+    height: 850px; 
+  } 
+
+  .pd{
+    margin-right: 20px
+}

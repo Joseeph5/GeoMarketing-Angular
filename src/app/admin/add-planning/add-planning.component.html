@@ -1,0 +1,20 @@
+<div class="container">
+  <form class="form-horizontal" (ngSubmit)="addPlanning()">
+    <h2>Ajouter une planification</h2>
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2 pd">Les points d'interet: </label>
+      <mat-form-field>
+        <mat-label>choisir les points d'interet</mat-label>
+        <mat-select [formControl]="toppings" multiple>
+          <mat-option *ngFor="let topping of toppingPoi" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success" >Ajouter</button>
+  </form>
+</div>

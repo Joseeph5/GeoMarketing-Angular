@@ -11,6 +11,23 @@
 .pd{
     margin-right: 20px;
 }
+.main-color-bg{
+  background-color: #3c86e7;
+  border-color: #3c86e7;
+}
+
+.panel-text >h3 {
+  color: #ecf0f1;
+  
+}
+.align-right{
+right:0px;
+
+}
+
+.rightpos{
+margin-left: 30px;
+}
 
 .affix {
     top: 20px;
@@ -28,4 +45,20 @@
     margin:0px;
     
   }
+  #inner {
+    overflow: hidden;
+    
+  }
+  
+  .child {
+    float: left;
+    margin-left: 20px;
+    width: 100px;
+    height: 500px;
+  }
+  .child2 {
+    float: left;
+    width: 1800px;
+    height: 500px;
+  } 
 

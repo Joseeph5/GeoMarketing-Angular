@@ -8,17 +8,7 @@ import { AuthorizationService } from './services/authorization.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  @HostListener('window:scroll', ['$event']) 
-  onWindowScroll(event) {
-      
-      if (window.pageYOffset > 193) {
-        let element = document.getElementById('sidebar');
-        element.classList.add('affix');
-      }else {
-        let element = document.getElementById('sidebar');
-          element.classList.remove('affix'); 
-       }
-    }
+  
   title = 'GeoMarketing';
 
 

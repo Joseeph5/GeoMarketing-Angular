@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
   ngOnInit(){
     return this.apiService.getData().subscribe(data => {
       this.rows=data
-      console.log(this.rows)
+      console.log(this.rows.length)
      });
      
   }
@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
 
   openDialogDriver(): void {
     const dialogRef = this.dialog.open(AddDriverComponent, {
-      width: '1000px',
+      width: '1500px',
       
     });
 

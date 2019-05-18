@@ -70,7 +70,7 @@ export class MissionsComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(AddFormComponent, {
-      width: '1000px',
+      width: '1500px',
       data: {}
     });
 

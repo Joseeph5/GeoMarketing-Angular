@@ -6,7 +6,8 @@ import { createAuthorizationHeader } from './header';
 })
 export class AuthorizationService {
   AuthURL='http://fleet.tn/ws_rimtrack_all/signin';
-  PathsUrl='http://fleet.tn/ws_rimtrack_all/paths/details/813785';
+  PathsUrl='http://fleet.tn/ws_rimtrack_all/paths';
+  DetailsURL='http://fleet.tn/ws_rimtrack_all/paths/details';
   intervale = {
     "startDate": 1555432294000,
     "endDate": 1555433683000
@@ -21,11 +22,24 @@ export class AuthorizationService {
   }
 
 
-  getPaths(){
-    
+  getPath(id:any,startDate:any,endDate:any){
+    var intervale = {
+      "startDate": startDate,
+       "endDate": endDate
+      }
     let headers = createAuthorizationHeader();
     
-    return this.http.post<any>(this.PathsUrl, this.intervale, {headers : headers});
+    return this.http.post<any>(this.PathsUrl+"/"+id, intervale, {headers : headers});
     
+  }
+
+  getDetails(id:any,startDate:any,endDate:any){
+    var intervale = {
+      "startDate": startDate,
+      "endDate": endDate
+    }
+    let headers = createAuthorizationHeader();
+    
+    return this.http.post<any>(this.DetailsURL+"/"+id, intervale, {headers : headers});
   }
 }

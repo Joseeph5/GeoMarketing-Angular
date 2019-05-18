@@ -40,8 +40,8 @@ export class MissionComponent implements OnInit {
    public route:ActivatedRoute,public mapService:MapServiceService) {
     
   }
- 
-  displayedColumns: string[] = ['idmission', 'idvehicule', 'datedeb', 'datefin', 'mark', 'matricule'];
+  missionId:any;
+  displayedColumns: string[] = ['idmission', 'idvehicule', 'datedeb', 'datefin', 'mark', 'matricule','bt'];
 
   
   displayedColumn: string[] = ['idpoi', 'adress', 'adresse'];
@@ -51,11 +51,21 @@ export class MissionComponent implements OnInit {
 
 
    
+    this.getMissionData();
+    this.mapService.InitMap();
+   
+
+    
+  }
+  trajet(id:any){
+    return this.missionservice.getPoiData(id).subscribe(data => {
+      this.poi=data
+      console.log("ssssssssssssss",this.poi)
+    });
+    
     
 
-    this.getMissionData();
-    this.getPoiMission();
-    this.mapInit();
+
   }
 
   getMissionData(){
@@ -63,18 +73,19 @@ export class MissionComponent implements OnInit {
       this.driverId=params['id']
       this.missionservice.getData(this.driverId).subscribe(data=>{
         this.rows=data
+        
       })
     });
    
   }
 
-  mapInit(){
-    this.mapService.InitMap(this.driverId);
-    
+  mapInit(id:any){
+   
+   this.missionId=id;
   }
 
-  getPoiMission(){
-    return this.missionservice.getPoiData(this.driverId).subscribe(data => {
+  getPoiMission(id:any){
+      return this.missionservice.getPoiData(id).subscribe(data => {
       this.poi=data
       console.log("ssssssssssssss",this.poi)
     });
@@ -82,10 +93,11 @@ export class MissionComponent implements OnInit {
 
     
   
-  openDialog(name:string): void {
+  openDialog(id:any): void {
+    console.log("rrrrrrrrrr",id)
     const dialogRef = this.dialog.open(ReportingFormComponent, {
       width: '1000px',
-      data: {name}
+      data: {id:id}
     });
 
     dialogRef.afterClosed().subscribe(result => {

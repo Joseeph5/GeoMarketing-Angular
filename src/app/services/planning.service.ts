@@ -7,8 +7,8 @@ import { Planning } from '../shared/Planning'
   providedIn: 'root'
 })
 export class PlanningService {
-  DataURL = 'http://127.0.0.1:8000/planification';
-
+  DataURL = 'http://127.0.0.1:8000/planning';
+  DeleteURL='http://127.0.0.1:8000/removeplanning';
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -33,5 +33,12 @@ export class PlanningService {
       retry(1),
       catchError(this.handleError)
     );
+  }
+  delete(id:any):Observable<Planning>{
+    return this.http.delete<Planning>(this.DeleteURL+'/'+id,this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
   }
 }

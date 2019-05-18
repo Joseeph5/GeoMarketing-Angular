@@ -1,14 +1,11 @@
 export class Mission {
     idmission: number;
-    datedeb: string;
-    datefin:string;
+    date_deb: string;
+    date_fin:string;
     firstname:String;
     lastname:String;
     matricule:String
+    pois:string[];
     
 }
 
-export class login{
-    login :string;
-    password : string;
-}

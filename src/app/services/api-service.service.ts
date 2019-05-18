@@ -49,7 +49,7 @@ export class ApiServiceService {
   }
   addDriver(driver:Driver): Observable<Driver> {
     let headers = new HttpHeaders ({"Content-Type" : "application/json"});
-    return this.http.post<Driver>(this.AddDriverURL, JSON.stringify(driver))
+    return this.http.post<Driver>(this.AddDriverURL, driver)
     .pipe(
       retry(1),
       catchError(this.handleError)

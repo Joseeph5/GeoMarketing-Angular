@@ -1,51 +1,56 @@
+<div class="container">
+  <form class="form-horizontal" (ngSubmit)="addMission()">
+    <h2>Ajouter une mission</h2>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">date début:</label>
+      <div class="col-sm-8">
+        <input type="date" class="form-control" id="email" placeholder="Enter date début" [(ngModel)]="mission.date_deb"
+          name="date_deb">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">date fin:</label>
+      <div class="col-sm-8">
+        <input type="date" class="form-control" id="pwd" placeholder="Enter date fin" [(ngModel)]="mission.date_fin"
+          name="date_fin">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2 pd">Nome du conducteur: </label>
+      <mat-form-field>
+        <mat-label>Choisir un conducteur</mat-label>
+        <mat-select [(ngModel)]="driverSelected" name="driver">
+          <mat-option *ngFor="let driver of toppingDrivers" [value]="driver">
+            {{driver}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2 pd">Vehicule: </label>
+      <mat-form-field>
+        <mat-label>Choisir un vehicule</mat-label>
+        <mat-select [(ngModel)]="carsSelected" name="driver">
+          <mat-option *ngFor="let car of toppingCars" [value]="car">
+            {{car}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2 pd">Les points d'interet: </label>
+      <mat-form-field>
+        <mat-label>choisir les points d'interet</mat-label>
+        <mat-select [formControl]="toppings" multiple>
+          <mat-option *ngFor="let topping of toppingPoi" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
 
-  <div class="container">
-    <form class="form-horizontal"  (ngSubmit)="addMission()"> 
-        <h2>Ajouter une mission</h2>
-      
-        <div class="form-group">
-          <label class="control-label col-sm-2" >date début:</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="email" placeholder="Enter date début" [(ngModel)]="mission.date_deb" name="date_deb">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" >date fin:</label>
-          <div class="col-sm-8">          
-            <input type="text" class="form-control" id="pwd" placeholder="Enter date fin" [(ngModel)]="mission.date_fin" name="date_fin">
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Nome du conducteur</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="email" placeholder="Enter id de chauffeur" [(ngModel)]="mission.firstname" name="firstname">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" >prenom du conducteur</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="email" placeholder="Enter id de chauffeur" [(ngModel)]="mission.lastname" name="lastname">
-            </div>
-          </div>
-          <div class="form-group">
-              <label class="control-label col-sm-2" >Matricule:</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="email" placeholder="Enter id de vehicule" [(ngModel)]="mission.matricule" name="matricule">
-              </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2 pd" >Les points d'interet: </label>
-            <mat-form-field>
-                <mat-label>Toppings</mat-label>
-                <mat-select [formControl]="toppings" multiple>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-      
-      
-     
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>

@@ -9,6 +9,10 @@ import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
 })
 export class ReportingService {
   DataURL="http://127.0.0.1:8000/rapport";
+  AddURL="127.0.0.1:8000/addrapport";
+
+  
+  DeleteURL="";
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -29,9 +33,28 @@ export class ReportingService {
 constructor(private http: HttpClient) { }
 
 getData(id:any): Observable<Reporting[]>{
-  return this.http.get<Reporting[]>(this.DataURL).pipe(
+  return this.http.get<Reporting[]>(this.DataURL+'/'+id).pipe(
     retry(1),
     catchError(this.handleError)
   );
 }
+
+
+addReporting(reporting:Reporting): Observable<Reporting> {
+  return this.http.post<Reporting>(this.AddURL,reporting)
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
+  
+}
+
+delete(id:any):Observable<Reporting>{
+  return this.http.delete<Reporting>(this.DeleteURL+'/'+id,this.httpOptions)
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
+}
+
 }

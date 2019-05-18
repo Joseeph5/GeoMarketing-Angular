@@ -46,6 +46,9 @@ import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 
 import { ReportingFormComponent } from './driver/add-form/add-form.component';
 import { ReportingComponent } from './admin/reporting/reporting.component';
+import { AddVehiculeComponent } from './admin/add-vehicule/add-vehicule.component';
+import { AddGroupeComponent } from './admin/add-groupe/add-groupe.component';
+import { AddPlanningComponent } from './admin/add-planning/add-planning.component';
 
 
 
@@ -68,7 +71,10 @@ import { ReportingComponent } from './admin/reporting/reporting.component';
     DetailsComponent,
     AddDriverComponent,
     ReportingFormComponent,
-    ReportingComponent
+    ReportingComponent,
+    AddVehiculeComponent,
+    AddGroupeComponent,
+    AddPlanningComponent
 
 
   ],
@@ -96,7 +102,8 @@ import { ReportingComponent } from './admin/reporting/reporting.component';
     MatDatepickerModule,MatNativeDateModule],
   providers: [ApiServiceService,AuthorizationService,
     ],
-  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,AddDriverComponent,ReportingFormComponent],
+  entryComponents:[AddFormComponent,DeleteConfirmDialogComponent,AddDriverComponent,ReportingFormComponent,
+    AddGroupeComponent,AddVehiculeComponent,AddPlanningComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
