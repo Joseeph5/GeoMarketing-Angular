@@ -58,9 +58,10 @@ export class MissionComponent implements OnInit {
     
   }
   trajet(id:any){
+    this.mapService.driverMap(id);
     return this.missionservice.getPoiData(id).subscribe(data => {
       this.poi=data
-      console.log("ssssssssssssss",this.poi)
+      
     });
     
     

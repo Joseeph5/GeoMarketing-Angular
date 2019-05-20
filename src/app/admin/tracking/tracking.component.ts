@@ -6,6 +6,10 @@ import { Group } from 'src/app/shared/Group';
 import { Driver } from 'selenium-webdriver/chrome';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 import { timestamp } from 'rxjs/operators';
+import { Mission } from 'src/app/shared/Mission';
+import { MissionServiceService } from 'src/app/services/mission-service.service';
+import { MissionDriverService } from 'src/app/services/mission-driver.service';
+import { Router } from '@angular/router';
 //import '../../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
 declare let L;
 @Component({
@@ -25,7 +29,7 @@ export class TrackingComponent implements OnInit {
   groups:Group[];
   cars:Group[];
   device:any;
-  PoiData:Group[];
+  PoiData:any;
   arr :any[][]=new Array();
   arr2:any[]=new Array();
   trames :any[]=new Array();
@@ -35,9 +39,11 @@ export class TrackingComponent implements OnInit {
   endDate:any;
   beginPathTime:any;
   endPathTime:any;
-
+  missionData:Mission[];
+  missionId:any;
   constructor(public mapService:MapServiceService,public trackService:TrackingService,
-    public auth:AuthorizationService) {
+    public auth:AuthorizationService,private missionservice:MissionServiceService,
+    private missionDriverService: MissionDriverService,public router: Router) {
     console.log(this.selectedValue);
    }
 
@@ -74,8 +80,9 @@ export class TrackingComponent implements OnInit {
 
   drawPath(){
     
-    var index = this.trames.indexOf(this.selectedValue3);
-    this.auth.getDetails(this.device, this.paths[index].beginPathTime,this.paths[index].endPathTime).subscribe(data => {
+   // var index = this.trames.indexOf(this.selectedValue3);
+    for (var j=0; j<this.paths.length; j++) {
+    this.auth.getDetails(this.device, this.paths[j].beginPathTime,this.paths[j].endPathTime).subscribe(data => {
       
       this.path= data.coordinates
       for (var i=0; i<this.path.length; i++) {
@@ -86,10 +93,12 @@ export class TrackingComponent implements OnInit {
        console.log('draaaaaaaaaaaaaaaaaaaaw',this.path)
       });
     
-       
+    }  
   }
 
   getPaths(){
+
+    this.getPoiMission();
     this.auth.getPath(this.device,this.startDate,this.endDate).subscribe(data => {
       this.paths=data
       for (var i=0; i<this.paths.length; i++) {
@@ -100,8 +109,47 @@ export class TrackingComponent implements OnInit {
        console.log("traaaaaaaams",this.paths)
     });
   }
+  getPoiMission(){
+    return this.missionservice.getData().subscribe(data => {
+      this.missionData=data
+      var i=0;
+      var stop=false;
+      while ( i<this.missionData.length && stop==false) {
+        if(this.missionData[i].date_deb==this.startDate && this.missionData[i].date_fin==this.endDate){
+          console.log('truuuuuuuuuuuuuuuuuuuuuuuue')
+          this.missionId=this.missionData[i].idmission
+          this.getPoi(this.missionId);
+          this.mapService.driverMap(this.missionId);
+          stop=true
+        }
+        i++
+       }
+
+      console.log(this.PoiData)
+     });
+  }
+  
   
  getStopDuration(){
   console.log("dateeeeeee",this.selectedValue3)
  }
+
+
+ getPoi(id:any){
+  return this.missionDriverService.getPoiData(id).subscribe(data => {
+    this.PoiData=data
+    console.log("ssssssssssssss",this.PoiData)
+  });
+ }
+  navigateToReportion(id:any){
+    console.log(id);
+    this.router.navigateByUrl('/reporting/'+id);
+  }
+
+  navigateToSuivi(id:any){
+    this.router.navigateByUrl('/suivi/'+id);
+  }
+
+
+
 }

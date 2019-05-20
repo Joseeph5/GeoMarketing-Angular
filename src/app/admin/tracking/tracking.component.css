@@ -35,11 +35,14 @@
   }
   .child2 {
     float: left;
-    width: 2000px;
+    width: 1700px;
     
     height: 850px; 
   } 
 
   .pd{
     margin-right: 20px
+}
+.rightpos{
+  margin-left: 10px;
 }

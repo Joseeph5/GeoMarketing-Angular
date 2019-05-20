@@ -94,13 +94,13 @@
                     />
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="iddriver">
+                <ngx-datatable-column name="Nom du conducteur">
                   <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                     <span
                       title="Double click to edit"
                       (dblclick)="editing[rowIndex + '-iddriver'] = true"
                       *ngIf="!editing[rowIndex + '-iddriver']">
-                      {{row.iddriver}}
+                      {{row.iddriver.first_name}} {{row.iddriver.last_name}}
                     </span>
                     <input
                       autofocus
@@ -111,13 +111,13 @@
                     />
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="idvehicule">
+                <ngx-datatable-column name="Vehicule Marque">
                   <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                     <span
                       title="Double click to edit"
                       (dblclick)="editing[rowIndex + '-idvehicule'] = true"
-                      *ngIf="!editing[rowIndex + '-idvehicule']">
-                      {{row.idvehicule}}
+                      *ngIf="!editing[rowIndex + '-idvehicule.mark']">
+                      {{row.idvehicule.mark}}
                     </span>
                     <input
                       autofocus
@@ -135,6 +135,10 @@
                     </button>
                     <button  class="btn btn-sm btn-primary rightpos" (click)="navigateToReportion(id)">
                       <i class="fa fa-trash"></i> Rapport
+                     
+                    </button>
+                    <button  class="btn btn-sm btn-success rightpos" (click)="navigateToSuivi(id)">
+                      <i class="fa fa-trash"></i> Suivi
                      
                     </button>
                   </ng-template>

@@ -49,6 +49,7 @@ import { ReportingComponent } from './admin/reporting/reporting.component';
 import { AddVehiculeComponent } from './admin/add-vehicule/add-vehicule.component';
 import { AddGroupeComponent } from './admin/add-groupe/add-groupe.component';
 import { AddPlanningComponent } from './admin/add-planning/add-planning.component';
+import { SuiviComponent } from './admin/suivi/suivi.component';
 
 
 
@@ -74,7 +75,8 @@ import { AddPlanningComponent } from './admin/add-planning/add-planning.componen
     ReportingComponent,
     AddVehiculeComponent,
     AddGroupeComponent,
-    AddPlanningComponent
+    AddPlanningComponent,
+    SuiviComponent
 
 
   ],

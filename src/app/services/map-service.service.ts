@@ -26,11 +26,12 @@ export class MapServiceService {
 
     InitMap(){
     
-      this.map= L.map('map').setView([36.723, 10.747], 10);
+      this.map= L.map('map').setView([36.723, 10.747], 9);
   
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
+
       var popup = L.popup();
 
        function onMapClick(e) {
@@ -112,14 +113,12 @@ export class MapServiceService {
      this.missionservice.getPoiData(id).subscribe(data => {
       this.PoiData=data
       
-      console.log('sssssss',this.PoiData)
-      this.PoiData.forEach(function (value) {
-
-        var marker = L.marker([value.latitude, value.longitude]).addTo(this.map);
-        marker.bindPopup(value.address.bold()+"</br>"+value.address);
+      for (var i=0; i<this.PoiData.length; i++) {
+        var marker = L.marker([this.PoiData[i].latitude, this.PoiData[i].longitude]).addTo(this.map);
+        marker.bindPopup(this.PoiData[i].address.bold()+"</br>"+this.PoiData[i].address);
+        console.log('sssssss')
         
-        });
-
+       }
         
      });
 

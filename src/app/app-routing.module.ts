@@ -14,6 +14,7 @@ import { DetailsComponent } from './admin/details/details.component';
 
 
 import { ReportingComponent } from './admin/reporting/reporting.component';
+import { SuiviComponent } from './admin/suivi/suivi.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
 
   {path:'drivermission/:id',component:MissionComponent},
   {path:'details',component:DetailsComponent},
-  {path:'reporting/:id',component:ReportingComponent}
+  {path:'reporting/:id',component:ReportingComponent},
+  {path:'suivi/:id',component:SuiviComponent}
 
 ];
 

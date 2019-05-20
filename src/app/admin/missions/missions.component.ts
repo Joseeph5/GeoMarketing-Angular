@@ -86,5 +86,9 @@ export class MissionsComponent implements OnInit {
     console.log(id);
     this.router.navigateByUrl('/reporting/'+id);
   }
+
+  navigateToSuivi(id:any){
+    this.router.navigateByUrl('/suivi/'+id);
+  }
   
 }

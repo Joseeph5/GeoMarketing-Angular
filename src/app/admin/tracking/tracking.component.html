@@ -39,7 +39,7 @@
                  <mat-label>Les Vehicules</mat-label>
                 <mat-select [(ngModel)]="selectedValue2" name="car" (selectionChange)="getDeviceId()">
                   <mat-option *ngFor="let car of cars" [value]="car.vehicule_id">
-                    {{car.vehicule_id}}
+                    {{car.marka }}{{car.matricule }}
                   </mat-option>
                 </mat-select>
               </mat-form-field> 
@@ -62,7 +62,30 @@
              <button type="button" class="btn btn-success mg " (click)="drawPath()">Recherche</button>
             </div> 
 
-
+            <div>
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <ul>
+                          
+                                <li *ngFor="let a of PoiData; let iteration = index">
+                                      <mat-step [label]=a.name state="phone">
+                                          <div>
+                                            <p>{{a.address}}</p>
+                                        
+                                             
+                                          </div>
+                                          <div class=" col-md-offset-10">
+                                            <button type="button" class="btn btn-primary "  (click)="navigateToReportion(a.idmission)">Rapport</button>
+                                            <button type="button" class="btn btn-success rightpos"  (click)="navigateToSuivi(a.idmission)">Suivi</button>
+                                      </div>
+                                      </mat-step>
+                                
+                                </li>
+                        
+                    </ul> 
+                       
+                        
+              </mat-horizontal-stepper>  
+         </div>
               
 
              
