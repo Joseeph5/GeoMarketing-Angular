@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-vehicule.component.css']
 })
 export class AddVehiculeComponent implements OnInit {
-
+  car:any[];
   constructor() { }
 
   ngOnInit() {
   }
-
+  addVehicule(){
+    
+  }
 }

@@ -5,5 +5,5 @@ export class Reporting {
     idpoi:number;
     qte:number;
     facing:number;
-    
+    ref:number;
 }

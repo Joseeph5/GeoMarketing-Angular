@@ -7,10 +7,10 @@ import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
 })
 export class GroupService {
 
-  DataURL = 'http://127.0.0.1:8000/';
-  UpdateURL='http://127.0.0.1:8000/';
-  DeleteURL='http://127.0.0.1:8000/';
-  PostURL='http://127.0.0.1:8000/';
+  DataURL = 'http://127.0.0.1:8000/groupe';
+  UpdateURL='http://192.168.1.107:8000/';
+  DeleteURL='http://127.0.0.1:8000/removegroup';
+  AddURL='http://192.168.1.107:8000/addgroupe';
   
   handleError(error) {
     let errorMessage = '';
@@ -53,8 +53,8 @@ export class GroupService {
     )
   }
   
-  addGroup(mission:any): Observable<any> {
-    return this.http.post<any>(this.PostURL,mission)
+  addGroup(nom:any): Observable<any> {
+    return this.http.post<any>(this.AddURL,nom)
     .pipe(
       retry(1),
       catchError(this.handleError)

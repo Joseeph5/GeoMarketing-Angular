@@ -1,7 +1,7 @@
 
 
 <div class="col-md-1 ng"> 
-  <div class="list-group affix_dash " (scroll)="onWindowScroll($event);" id="sidebar">
+  <div class="list-group affix_dash "  id="sidebar">
     <a routerLink="/dashboard" class="list-group-item active main-color-bg">
       <i class="material-icons mg-icon">dashboard </i>
     </a>
@@ -25,13 +25,13 @@
   <div class="panel-body">
     <div class="col-md-2">
       <div class="well well-sm">
-        <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 90</h2>
+        <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{drivers}}</h2>
         <h4>Les conducteurs</h4>
       </div>
     </div>
     <div class="col-md-2">
       <div class="well well-sm">
-        <h2><span class="glyphicon glyphicon-list-alt" ></span> 45</h2>
+        <h2><span class="glyphicon glyphicon-list-alt" ></span> {{missions}}</h2>
         <h4>Les Missions</h4>
       </div>
     </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="col-md-2">
       <div class="well well-sm">
-        <h2><i class="material-icons mg-icon">directions_car</i> 33</h2>
+        <h2><i class="material-icons mg-icon">directions_car</i>{{cars}}</h2>
         <h4>Les Vehicules</h4>
       </div>
     </div>

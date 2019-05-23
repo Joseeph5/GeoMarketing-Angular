@@ -1,165 +1,92 @@
-
-
- 
-
-
-
 <div id="container">
   <div id="inner">
     <div class="child">
-      <div> 
-        <div class="list-group affix_dash " (scroll)="onWindowScroll($event);" id="sidebar">
-        <a routerLink="/dashboard" class="list-group-item active main-color-bg">
-  
-        <i class="material-icons mg-icon">dashboard </i>
-      </a>
-      <a routerLink="/planning" class="list-group-item"> <i class="material-icons mg-icon">edit </i></a>
-      <a routerLink="/tracking" class="list-group-item"> <i class="material-icons mg-icon">track_changes </i></a>
-  
-  
-      <a routerLink="/missions" class="list-group-item"><i class="material-icons mg-icon">list </i> </a>
-  
-  
-      <a routerLink="/driver" class="list-group-item"><i class="material-icons mg-icon">person</i> </a>
-      <a routerLink="/groups" class="list-group-item"><i class="material-icons mg-icon">group</i> </a>
-      <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
-      
-  
-    </div>
-  
-  
-  </div>
+      <div>
+        <div class="list-group affix_dash "  id="sidebar">
+          <a routerLink="/dashboard" class="list-group-item active main-color-bg">
+
+            <i class="material-icons mg-icon">dashboard </i>
+          </a>
+          <a routerLink="/planning" class="list-group-item"> <i class="material-icons mg-icon">edit </i></a>
+          <a routerLink="/tracking" class="list-group-item"> <i class="material-icons mg-icon">track_changes </i></a>
+
+
+          <a routerLink="/missions" class="list-group-item"><i class="material-icons mg-icon">list </i> </a>
+
+
+          <a routerLink="/driver" class="list-group-item"><i class="material-icons mg-icon">person</i> </a>
+          <a routerLink="/groups" class="list-group-item"><i class="material-icons mg-icon">group</i> </a>
+          <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
+
+
+        </div>
+
+
+      </div>
     </div>
     <div class="child2">
 
-<div >
+      <div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading main-color-bg">
-      <h3 class="panel-title panel-text" style="color:#ecf0f1;">Les groupes</h3>
-    </div>
-    <div class="panel-body">
-      
-          <div class=" col-md-offset-11">
-              <button type="button" class="btn btn-success"  (click)="openDialog()">Add</button>
-            </div>   
-          
-      <br>
-      
-        <div class=" col-md-offset-0">
-          <ngx-datatable 
-              #mydatatable
-              class="material"
-              [headerHeight]="50"
-              [limit]="10"
+        <div class="panel panel-default">
+          <div class="panel-heading main-color-bg">
+            <h3 class="panel-title panel-text" style="color:#ecf0f1;">Les groupes</h3>
+          </div>
+          <div class="panel-body">
+
+            <div class=" col-md-offset-11">
+              <button type="button" class="btn btn-success" (click)="openDialog()">Add</button>
+            </div>
+
+            <br>
+
+            <div class=" col-md-offset-0">
+              <ngx-datatable #mydatatable 
+              class="material" 
+              [headerHeight]="50" 
+              [limit]="10" 
               [columnMode]="'force'"
-              [footerHeight]="50"
-              [rowHeight]="'auto'"
-              [rows]="rows">
-              <ngx-datatable-column name="idmission">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-idmission'] = true"
-                    *ngIf="!editing[rowIndex + '-idmission']">
-                    {{row.idmission}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'idmission', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-idmission']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="datedeb"> 
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-datedeb'] = true"
-                    *ngIf="!editing[rowIndex + '-datedeb']">
-                    {{row.date_deb}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'datedeb', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-datedeb']"
-                    type="text" 
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="date_fin">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-date_fin'] = true"
-                    *ngIf="!editing[rowIndex + '-date_fin']">
-                    {{row.date_fin}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'date_fin', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-date_fin']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="iddriver">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-iddriver'] = true"
-                    *ngIf="!editing[rowIndex + '-iddriver']">
-                    {{row.iddriver}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'iddriver', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-iddriver']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="idvehicule">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-idvehicule'] = true"
-                    *ngIf="!editing[rowIndex + '-idvehicule']">
-                    {{row.idvehicule}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'idvehicule', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-idvehicule']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
-                <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
-                  <button class="btn btn-sm btn-danger" (click)="delete(id)">
-                    <i class="fa fa-trash"></i> Delete
-                  </button>
-                  <button  class="btn btn-sm btn-primary rightpos" (click)="navigateToReportion(id)">
-                    <i class="fa fa-trash"></i> Rapport
-                   
-                  </button>
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>
+              [footerHeight]="50" 
+              [rowHeight]="'auto'" 
+              [rows]="groups">
+                <ngx-datatable-column name="groupe_id">
+                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                    <span title="Double click to edit" (dblclick)="editing[rowIndex + '-groupe_id'] = true"
+                      *ngIf="!editing[rowIndex + '-groupe_id']">
+                      {{row.groupe_id}}
+                    </span>
+                    <input autofocus (blur)="updateValue($event, 'groupe_id', rowIndex)"
+                      *ngIf="editing[rowIndex+ '-groupe_id']" type="text" [value]="value" />
+                  </ng-template>
+                </ngx-datatable-column>
+                
+                <ngx-datatable-column name="nom">
+                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                    <span title="Double click to edit" (dblclick)="editing[rowIndex + '-nom'] = true"
+                      *ngIf="!editing[rowIndex + '-nom']">
+                      {{row.nom}}
+                    </span>
+                    <input autofocus (blur)="updateValue($event, 'nom', rowIndex)"
+                      *ngIf="editing[rowIndex+ '-nom']" type="text" [value]="value" />
+                  </ng-template>
+                </ngx-datatable-column>
+                
+                <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
+                  <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+                    <button class="btn btn-sm btn-danger" (click)="delete(row.groupe_id)">
+                      <i class="fa fa-trash"></i> Delete
+                    </button>
+                    
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </div>
+
+          </div>
+
         </div>
 
+      </div>
     </div>
 
   </div>
-
-</div>
-    </div>
-   
-</div>

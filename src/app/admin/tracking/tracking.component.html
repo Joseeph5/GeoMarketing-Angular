@@ -7,7 +7,7 @@
     <div id="inner">
       <div class="child">
           <div >
-              <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
+              <div class="list-group affix_dash"  id="sidebar">
                 <a routerLink="/dashboard" class="list-group-item active main-color-bg">
                   <i class="material-icons mg-icon">dashboard </i>
                 </a>
@@ -39,7 +39,7 @@
                  <mat-label>Les Vehicules</mat-label>
                 <mat-select [(ngModel)]="selectedValue2" name="car" (selectionChange)="getDeviceId()">
                   <mat-option *ngFor="let car of cars" [value]="car.vehicule_id">
-                    {{car.marka }}{{car.matricule }}
+                    {{car.mark }}{{car.matricule}}
                   </mat-option>
                 </mat-select>
               </mat-form-field> 
@@ -63,7 +63,7 @@
             </div> 
 
             <div>
-              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+              <mat-horizontal-stepper  #stepper>
                     <ul>
                           
                                 <li *ngFor="let a of PoiData; let iteration = index">

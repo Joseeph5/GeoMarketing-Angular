@@ -9,7 +9,7 @@ import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
 })
 export class ReportingService {
   DataURL="http://127.0.0.1:8000/rapport";
-  AddURL="127.0.0.1:8000/addrapport";
+  AddURL="http://127.0.0.1:8000/addrapport";
 
   
   DeleteURL="";
@@ -40,8 +40,8 @@ getData(id:any): Observable<Reporting[]>{
 }
 
 
-addReporting(reporting:Reporting): Observable<Reporting> {
-  return this.http.post<Reporting>(this.AddURL,reporting)
+addReporting(id:any,reporting:Reporting): Observable<Reporting> {
+  return this.http.post<Reporting>(this.AddURL+"/"+id,reporting)
   .pipe(
     retry(1),
     catchError(this.handleError)

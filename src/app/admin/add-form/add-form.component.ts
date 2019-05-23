@@ -25,12 +25,10 @@ export class AddFormComponent implements OnInit {
   driverSelected :string;
   carsSelected :string;
   test:any;
-  arr:any[] ;
+  poiList:any[] ;
   dirverList:any;
   carsList:any;
-  toppingPoi :number[]=new Array();
-  toppingDrivers :string[]=new Array();
-  toppingCars :String[]=new Array();
+  
 
 
   constructor(private fb: FormBuilder,public missionservice:MissionServiceService,private toastr: ToastrService,
@@ -50,33 +48,22 @@ export class AddFormComponent implements OnInit {
   getDrivers(){
     return this.apiService.getData().subscribe(data => {
       this.dirverList=data
-      for(var i=0;i<this.dirverList.length;i++) {
-        this.toppingDrivers.push(this.dirverList[i].first_name+" "+this.dirverList[i].last_name)
-        
-      } 
+      console.log('driiiiiiver',this.dirverList)
      
      });
   }
   getCars(){
     return this.vehiculeService.getData().subscribe(data => {
       this.carsList=data
-      for(var i=0;i<this.carsList.length;i++) {
-        this.toppingCars.push(this.carsList[i].mark+" "+this.carsList[i].matricule)
-        
-      } 
+       
      
      });
   }
   getPoi(){
     this.trackService.getPoiData().subscribe(data=>{
-      this.arr=data
-      
-      for(var i=0;i<this.arr.length;i++) {
-
-        this.toppingPoi.push(this.arr[i].name)
-
-        
-      } 
+      this.poiList=data
+      console.log('sssssssssss',this.poiList);
+       
     });
   }
 
@@ -85,14 +72,8 @@ export class AddFormComponent implements OnInit {
     this.mission.pois=this.toppings.value;
       console.log('sssssssssss',this.mission);
 
-
-    console.log('driiiiiiver',this.driverSelected)
-    console.log('carrrrrrrrrrrrrrrs',this.carsSelected)
-    console.log('poooooooi',this.toppings.value)
-    //  this.mission.pois=this.toppings.value;
-
-    //   this.missionservice.addMission(this.mission).subscribe(()=>{
-    //       console.log('sssssssssss',this.mission)
+    // this.missionservice.addMission(this.mission).subscribe(()=>{
+    //       console.log('succès',this.mission)
     //       this.toastr.success('Ajouter avec succès');
     //       });
          

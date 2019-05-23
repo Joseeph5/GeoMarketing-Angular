@@ -5,6 +5,7 @@ import { MissionDriverService } from './mission-driver.service';
 import { AuthorizationService } from './authorization.service';
 declare let L;
 import '../../../node_modules/leaflet-play/dist/LeafletPlayback.js'
+import { Poi } from '../shared/Poi';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class MapServiceService {
   sliderControl: true     
 };
 
-  PoiData:Group[];
+  PoiData:Poi[];
   arr :any[][]=new Array();
   arr2:any[]=new Array();
   path:any;

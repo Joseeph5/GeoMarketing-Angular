@@ -1,6 +1,6 @@
 
 <div class="col-md-1 ng">
-    <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
+    <div class="list-group affix_dash"  id="sidebar">
       <a routerLink="/dashboard" class="list-group-item active main-color-bg">
         <i class="material-icons mg-icon">dashboard </i>
       </a>
@@ -24,7 +24,7 @@
   <li *ngFor="let ts of pois; let iteration = index">
     <div class="">
       <h4>
-          Rapport de   {{ts.point_interest_id}}        
+          Rapport de   {{ts.name}}        
       </h4>
         <ngx-datatable
           class='material'

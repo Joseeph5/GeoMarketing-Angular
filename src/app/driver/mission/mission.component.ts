@@ -35,7 +35,7 @@ export class MissionComponent implements OnInit {
   rows:Mission[];
   poi:any;
   driverId:any;
-  
+  idmission:any;
   constructor(private missionservice: MissionDriverService, public dialog: MatDialog, public poiservice: PoiService,
    public route:ActivatedRoute,public mapService:MapServiceService) {
     
@@ -58,6 +58,7 @@ export class MissionComponent implements OnInit {
     
   }
   trajet(id:any){
+    this.idmission=id;
     this.mapService.driverMap(id);
     return this.missionservice.getPoiData(id).subscribe(data => {
       this.poi=data
@@ -98,7 +99,7 @@ export class MissionComponent implements OnInit {
     console.log("rrrrrrrrrr",id)
     const dialogRef = this.dialog.open(ReportingFormComponent, {
       width: '1000px',
-      data: {id:id}
+      data: {idmission:this.idmission,idpoi:id}
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,7 +1,7 @@
 
 
 <div class="col-md-1 ng">
-    <div class="list-group affix_dash" (scroll)="onWindowScroll($event);" id="sidebar">
+    <div class="list-group affix_dash" id="sidebar">
       <a routerLink="/dashboard" class="list-group-item active main-color-bg">
         <i class="material-icons mg-icon">dashboard </i>
       </a>
@@ -60,18 +60,18 @@
                     />
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="datedeb"> 
+                <ngx-datatable-column name="date_deb"> 
                   <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                     <span
                       title="Double click to edit"
-                      (dblclick)="editing[rowIndex + '-datedeb'] = true"
-                      *ngIf="!editing[rowIndex + '-datedeb']">
+                      (dblclick)="editing[rowIndex + '-date_deb'] = true"
+                      *ngIf="!editing[rowIndex + '-date_deb']">
                       {{row.date_deb}}
                     </span>
                     <input
                       autofocus
-                      (blur)="updateValue($event, 'datedeb', rowIndex)"
-                      *ngIf="editing[rowIndex+ '-datedeb']"
+                      (blur)="updateValue($event, 'date_deb', rowIndex)"
+                      *ngIf="editing[rowIndex+ '-date_deb']"
                       type="text" 
                       [value]="value"
                     />
@@ -112,8 +112,15 @@
                   </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Vehicule Marque">
-                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                    <span
+                    
+                  <ng-template ngx-datatable-cell-template >
+                      <mat-form-field>
+                          <mat-label>choisir les points d'interet</mat-label>
+                          <mat-select [(ngModel)]="carselected" >
+                            <mat-option *ngFor="let car of cars" [value]="car.vehicule_id" >{{car.mark}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    <!-- <span
                       title="Double click to edit"
                       (dblclick)="editing[rowIndex + '-idvehicule'] = true"
                       *ngIf="!editing[rowIndex + '-idvehicule.mark']">
@@ -125,7 +132,7 @@
                       *ngIf="editing[rowIndex+ '-idvehicule']"
                       type="text"
                       [value]="value"
-                    />
+                    /> -->
                   </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">

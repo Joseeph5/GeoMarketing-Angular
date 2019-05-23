@@ -4,9 +4,8 @@ export class Mission {
     date_fin:string;
     firstname:String;
     lastname:String;
-
-    matricule:String
-
+    id_driver:number;
+    id_vehicule:number;
     pois:string[];
     
 }

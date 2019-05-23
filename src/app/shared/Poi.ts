@@ -1,5 +1,9 @@
 export class Poi {
-    idpoi:number;
-    adress:any;
-    adresse :any;
+    point_interest_id: number;
+    name: string;
+    address:string;
+    latitude:number;
+    longitude:number;
+    
+    
 }

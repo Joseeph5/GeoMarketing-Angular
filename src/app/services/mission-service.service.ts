@@ -45,7 +45,7 @@ export class MissionServiceService {
   }
 
   updateMission(id:any, mission:Mission): Observable<Mission> {
-    return this.http.put<Mission>(this.UpdateURL+'/'+id, JSON.stringify(mission))
+    return this.http.put<Mission>(this.UpdateURL+'/'+id, mission)
     .pipe(
       retry(1),
       catchError(this.handleError)

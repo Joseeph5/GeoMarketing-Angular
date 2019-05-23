@@ -7,6 +7,8 @@ import { AddFormComponent } from '../add-form/add-form.component';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService } from 'src/app/services/dialog.service';
 import { Router } from '@angular/router';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { VehiculeService } from 'src/app/services/vehicule.service';
 
 
 @Component({
@@ -16,24 +18,44 @@ import { Router } from '@angular/router';
 })
 export class MissionsComponent implements OnInit {
   
-  editing = {};
+  editing = {}; 
   
   rows:Mission[];
-  
+  drivers:any;
 
+  cars:any;
+  carselected:any;
   constructor(private missionservice:MissionServiceService,public dialog: MatDialog,
-    public dialogServer:DialogService,
+    public dialogServer:DialogService,private apiService:ApiServiceService,public vehiculeService:VehiculeService,
    private toastr: ToastrService,public router: Router){
    
    
   } 
 
   ngOnInit(){
+    this.getDrivers();
+    this.getCars();
    return this.missionservice.getData().subscribe(data => {
      this.rows=data
      console.log(this.rows)
     });
     
+  }
+
+  getDrivers(){
+    return this.apiService.getData().subscribe(data => {
+      this.drivers=data
+      console.log(this.drivers)
+     });
+  }
+
+  
+
+  getCars(){
+    return this.vehiculeService.getData().subscribe(data => {
+      this.cars=data
+      console.log(this.cars)
+     });
   }
 
   updateValue(event, cell, rowIndex) {
