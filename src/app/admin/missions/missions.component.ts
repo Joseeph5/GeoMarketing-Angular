@@ -25,6 +25,7 @@ export class MissionsComponent implements OnInit {
 
   cars:any;
   carselected:any;
+  selected="ssssssssss";
   constructor(private missionservice:MissionServiceService,public dialog: MatDialog,
     public dialogServer:DialogService,private apiService:ApiServiceService,public vehiculeService:VehiculeService,
    private toastr: ToastrService,public router: Router){
@@ -77,6 +78,7 @@ export class MissionsComponent implements OnInit {
   delete(id:any){
     this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
     .afterClosed().subscribe(res =>{
+      console.log("iddd",id)
       if(res){
         this.missionservice.delete(id).subscribe(()=>{
           this.toastr.success('Supprimé avec succès');

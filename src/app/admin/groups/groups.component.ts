@@ -41,17 +41,17 @@ export class GroupsComponent implements OnInit {
   delete(id:any){
 
     console.log('sssssssssss',id)
-    // this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
-    // .afterClosed().subscribe(res =>{
-    //   if(res){
-    //     this.groupService.delete(id).subscribe(()=>{
-    //       this.toastr.success('Supprimé avec succès');
+    this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        this.groupService.delete(id).subscribe(()=>{
+          this.toastr.warning('Supprimé avec succès');
          
           
-    //     });
+        });
         
-    //   }
-    // });
+      }
+    });
     
   }
 }

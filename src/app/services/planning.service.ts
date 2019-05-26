@@ -7,8 +7,9 @@ import { Planning } from '../shared/Planning'
   providedIn: 'root'
 })
 export class PlanningService {
-  DataURL = 'http://127.0.0.1:8000/planning';
+  DataURL = 'http://127.0.0.1:8000/planificationpoi';
   DeleteURL='http://127.0.0.1:8000/removeplanning';
+  AddURL='http://127.0.0.1:8000/addplanning';
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
@@ -41,4 +42,14 @@ export class PlanningService {
       catchError(this.handleError)
     )
   }
+  addplanning(planning:Planning): Observable<Planning> {
+    return this.http.post<Planning>(this.AddURL,planning)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+    
+  }
+
+  
 }

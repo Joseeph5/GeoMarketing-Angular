@@ -56,47 +56,40 @@
               [footerHeight]="50"
               [rowHeight]="'auto'"
               [rows]="rows">
-              <ngx-datatable-column name="idmission">
+              <ngx-datatable-column name="idPlanification">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                   <span
                     title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-idmission'] = true"
-                    *ngIf="!editing[rowIndex + '-idmission']">
-                    {{row.idmission}}
+                    (dblclick)="editing[rowIndex + '-idPlanification'] = true"
+                    *ngIf="!editing[rowIndex + '-idPlanification']">
+                    {{row.idplanification}}
                   </span>
                   <input
                     autofocus
-                    (blur)="updateValue($event, 'idmission', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-idmission']"
+                    (blur)="updateValue($event, 'idPlanification', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-idPlanification']"
                     type="text"
                     [value]="value"
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="datedeb"> 
+              <ngx-datatable-column name="Les points d'interet"> 
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-datedeb'] = true"
-                    *ngIf="!editing[rowIndex + '-datedeb']">
-                    {{row.date_deb}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'datedeb', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-datedeb']"
-                    type="text" 
-                    [value]="value"
-                  />
+                  <mat-form-field>
+                    <mat-label>les points d'interet</mat-label>
+                    <mat-select [(ngModel)]="poiSelected" multiple>
+                      <mat-option *ngFor="let row of rows" [value]="row.name" >{{row.poi.adress}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="date_fin">
+              <ngx-datatable-column name="date_début">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                   <span
                     title="Double click to edit"
                     (dblclick)="editing[rowIndex + '-date_fin'] = true"
                     *ngIf="!editing[rowIndex + '-date_fin']">
-                    {{row.date_fin}}
+                    choisir date début
                   </span>
                   <input
                     autofocus
@@ -107,13 +100,13 @@
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="iddriver">
+              <ngx-datatable-column name="date_fin">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                   <span
                     title="Double click to edit"
                     (dblclick)="editing[rowIndex + '-iddriver'] = true"
                     *ngIf="!editing[rowIndex + '-iddriver']">
-                    {{row.iddriver}}
+                    choisir date fin
                   </span>
                   <input
                     autofocus
@@ -124,13 +117,30 @@
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="idvehicule">
+              <ngx-datatable-column name="Conducteur">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-iddriver'] = true"
+                    *ngIf="!editing[rowIndex + '-iddriver']">
+                    choisir conducteur
+                  </span>
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'iddriver', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-iddriver']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Vehicule">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                   <span
                     title="Double click to edit"
                     (dblclick)="editing[rowIndex + '-idvehicule'] = true"
                     *ngIf="!editing[rowIndex + '-idvehicule']">
-                    {{row.idvehicule}}
+                    choisir vehicule
                   </span>
                   <input
                     autofocus
@@ -141,15 +151,15 @@
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
+              <ngx-datatable-column name="Action" prop="idplanification" [sortable]="false">
                 <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
                   <button class="btn btn-sm btn-danger" (click)="delete(id)">
                     <i class="fa fa-trash"></i> Delete
                   </button>
-                  <button  class="btn btn-sm btn-primary rightpos" (click)="navigateToReportion(id)">
-                    <i class="fa fa-trash"></i> Rapport
-                   
+                  <button class="btn btn-sm btn-success rightpos" (click)="delete(id)">
+                    <i class="fa fa-trash"></i> Ajouter mission
                   </button>
+                  
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>

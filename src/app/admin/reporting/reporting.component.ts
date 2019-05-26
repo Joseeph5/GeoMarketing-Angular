@@ -33,7 +33,7 @@ export class ReportingComponent implements OnInit {
       this.missionId=params['id']
       this.reportingservice.getData(this.missionId).subscribe(data=>{
         this.rows=data
-        console.log('sssssssss',this.rows)
+        console.log('ssssssdddsss',this.rows)
       })
     });
    

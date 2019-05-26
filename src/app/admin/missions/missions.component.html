@@ -113,18 +113,18 @@
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Vehicule Marque">
                     
-                  <ng-template ngx-datatable-cell-template >
-                      <mat-form-field>
-                          <mat-label>choisir les points d'interet</mat-label>
-                          <mat-select [(ngModel)]="carselected" >
+                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
+                      <!-- <mat-form-field>
+                          <mat-label></mat-label>
+                          <mat-select >
                             <mat-option *ngFor="let car of cars" [value]="car.vehicule_id" >{{car.mark}}</mat-option>
                           </mat-select>
-                        </mat-form-field>
-                    <!-- <span
+                        </mat-form-field> -->
+                    <span
                       title="Double click to edit"
                       (dblclick)="editing[rowIndex + '-idvehicule'] = true"
                       *ngIf="!editing[rowIndex + '-idvehicule.mark']">
-                      {{row.idvehicule.mark}}
+                      {{row.idvehicule.mark}} {{row.idvehicule.matricule}}
                     </span>
                     <input
                       autofocus
@@ -132,7 +132,7 @@
                       *ngIf="editing[rowIndex+ '-idvehicule']"
                       type="text"
                       [value]="value"
-                    /> -->
+                    />
                   </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">

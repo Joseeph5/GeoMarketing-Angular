@@ -72,10 +72,10 @@ export class AddFormComponent implements OnInit {
     this.mission.pois=this.toppings.value;
       console.log('sssssssssss',this.mission);
 
-    // this.missionservice.addMission(this.mission).subscribe(()=>{
-    //       console.log('succès',this.mission)
-    //       this.toastr.success('Ajouter avec succès');
-    //       });
+    this.missionservice.addMission(this.mission).subscribe(()=>{
+          console.log('succès',this.mission)
+          this.toastr.success('Ajouter avec succès');
+          });
          
        }
 }

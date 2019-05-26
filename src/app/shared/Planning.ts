@@ -1,4 +1,5 @@
 export class Planning {
 id :number;
-idpoi : number;
+idpoi : any;
+poi:any[];
 }

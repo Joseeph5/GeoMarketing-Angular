@@ -10,7 +10,7 @@ export class GroupService {
   DataURL = 'http://127.0.0.1:8000/groupe';
   UpdateURL='http://192.168.1.107:8000/';
   DeleteURL='http://127.0.0.1:8000/removegroup';
-  AddURL='http://192.168.1.107:8000/addgroupe';
+  AddURL='http://127.0.0.1:8000/addgroupe';
   
   handleError(error) {
     let errorMessage = '';

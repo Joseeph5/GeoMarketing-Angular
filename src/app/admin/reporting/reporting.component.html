@@ -15,17 +15,15 @@
     </div>
 </div>
 <div class="col-md-10">
-<ul>
+
   <h2>
     Rapport de mission {{missionId}}
     
   </h2>     
   <br>         
-  <li *ngFor="let ts of pois; let iteration = index">
+ 
     <div class="">
-      <h4>
-          Rapport de   {{ts.name}}        
-      </h4>
+      
         <ngx-datatable
           class='material'
           [rows]='rows'
@@ -49,22 +47,22 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="produit">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                <span>{{row.date}}</span>
+                <span>{{row.nom}}</span>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="référence">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                <span>{{row.date}}</span>
+                <span>{{row.reference}}</span>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="quantitié">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                <span>{{row.date}}</span>
+                <span>{{row.qte}}</span>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="face">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                <span>{{row.date}}</span>
+                <span>{{row.facing}}</span>
               </ng-template>
             </ngx-datatable-column>
           
@@ -74,8 +72,8 @@
      </div>
      <br>
   
-  </li>
+ 
 
-</ul> 
+
 </div>
 

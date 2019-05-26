@@ -71,9 +71,9 @@
                   </ng-template>
                 </ngx-datatable-column>
                 
-                <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
+                <ngx-datatable-column name="Action" prop="groupe_id" [sortable]="false">
                   <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
-                    <button class="btn btn-sm btn-danger" (click)="delete(row.groupe_id)">
+                    <button class="btn btn-sm btn-danger" (click)="delete(id)">
                       <i class="fa fa-trash"></i> Delete
                     </button>
                     

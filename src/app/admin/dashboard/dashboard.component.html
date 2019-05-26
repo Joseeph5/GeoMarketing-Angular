@@ -55,8 +55,8 @@
     </div>
     <div class="col-md-2">
       <div class="well well-sm">
-        <h2><i class="material-icons mg-icon">extension</i> 33</h2>
-        <h4>Les produits</h4>
+        <h2><i class="material-icons mg-icon">extension</i> {{groups}}</h2>
+        <h4>Les Groupes</h4>
       </div>
     </div>
     
@@ -66,17 +66,20 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Latest Users</h3>
+    <h3 class="panel-title">Les statistiques </h3>
   </div>
   <div class="panel-body">
       <div class='col-sm-6'>
           <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
+            <mat-form-field>
+              <mat-label>Select an option</mat-label>
+              <mat-select [(value)]="selected">
+                <mat-option>None</mat-option>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
       </div>
   </div>

@@ -111,40 +111,7 @@
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="icon">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-icon'] = true"
-                    *ngIf="!editing[rowIndex + '-icon']">
-                    {{row.icon}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'icon', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-icon']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="odo_offset">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-odo_offset'] = true"
-                    *ngIf="!editing[rowIndex + '-odo_offset']">
-                    {{row.odo_offset}}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'odo_offset', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-odo_offset']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
+              
               <ngx-datatable-column name="last_odo_update">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                   <span
@@ -202,7 +169,7 @@
                     title="Double click to edit"
                     (dblclick)="editing[rowIndex + '-groupe'] = true"
                     *ngIf="!editing[rowIndex + '-groupe']">
-                    {{row.groupe.groupe_id}}
+                    {{row.groupe.nom}
                   </span>
                   <input
                     autofocus

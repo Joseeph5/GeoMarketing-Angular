@@ -8,6 +8,9 @@ import { PlanningService } from 'src/app/services/planning.service';
 import { Planning } from 'src/app/shared/Planning';
 import { MatDialog } from '@angular/material';
 import { AddPlanningComponent } from '../add-planning/add-planning.component';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-planning',
@@ -20,32 +23,24 @@ import { AddPlanningComponent } from '../add-planning/add-planning.component';
 export class PlanningComponent implements OnInit {
   arr :number[][]=new Array();
   cars:any;
-  username="ecoti";
-  password="ecoti500p";
+ 
 
-  startDate: "2019-04-01T23:00:00.000Z";
-  endDate: "2019-04-16T22:59:00.000Z";
-  Authorization:any;
+  planningPoiList:any[] =new Array();
+  test:any[] =new Array();
   row:string[]=['1','2'];
   rows:Planning[];
+  editing = {};
+  poiSelected:any;
+  pois :any[]=new Array();
   displayedColumns: string[] = ['idplanification'];
-  constructor(public mapService:MapServiceService,public auth:AuthorizationService,
-    public router:Router,public dialog: MatDialog,
-    private planningservice:PlanningService) {
+
+  constructor(public router:Router,public dialog: MatDialog,
+    private planningService:PlanningService,public dialogServer:DialogService,private toastr: ToastrService) {
     
    }
 
-
-
- 
-
-  
-
   ngOnInit() {
-    // return this.planningservice.getData().subscribe(data => {
-    //   this.rows=data
-    //   console.log(this.rows)
-    //  });
+   this.getPoiMission();
   }
 
   openDialog(): void {
@@ -58,6 +53,35 @@ export class PlanningComponent implements OnInit {
       
       
     });
+  }
+  
+
+  getPoiMission(){
+    return this.planningService.getData().subscribe(data => {
+    this.rows=data
+    for (var i=0; i<this.rows.length; i++) {
+      
+      this.planningPoiList.push([this.rows[i].poi]);
+      
+     }
+    console.log("Listtttttttt",this.planningPoiList)
+    });
+  } 
+  
+  delete(id:any){
+    this.dialogServer.openDialogConfirm('êtes-vous sûr de supprimer...')
+    .afterClosed().subscribe(res =>{
+      console.log("iddd",id)
+      if(res){
+        this.planningService.delete(id).subscribe(()=>{
+          this.toastr.success('Supprimé avec succès');
+        
+          
+        });
+        
+      }
+    });
+    
   }
   
 }
