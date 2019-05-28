@@ -163,23 +163,7 @@
                   />
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="groupe">
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
-                  <span
-                    title="Double click to edit"
-                    (dblclick)="editing[rowIndex + '-groupe'] = true"
-                    *ngIf="!editing[rowIndex + '-groupe']">
-                    {{row.groupe.nom}
-                  </span>
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'sub_mark', rowIndex)"
-                    *ngIf="editing[rowIndex+ '-sub_mark']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
+            
               <ngx-datatable-column name="have_avatar">
                 <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"  let-row="row">
                   <span
@@ -215,7 +199,7 @@
                 </ng-template>
               </ngx-datatable-column>
               
-              <ngx-datatable-column name="Action" prop="idmission" [sortable]="false">
+              <ngx-datatable-column name="Action" prop="vehicule_id" [sortable]="false">
                 <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
                   <button class="btn btn-sm btn-danger" (click)="delete(id)">
                     <i class="fa fa-trash"></i> Delete

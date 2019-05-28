@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-2">
       <div class="well well-sm">
-        <h2><span class="glyphicon glyphicon-list-alt" ></span> {{missions}}</h2>
+        <h2><span class="glyphicon glyphicon-list-alt" ></span> {{missionsLength}}</h2>
         <h4>Les Missions</h4>
       </div>
     </div>
@@ -71,19 +71,23 @@
   <div class="panel-body">
       <div class='col-sm-6'>
           <div class="form-group">
-            <mat-form-field>
-              <mat-label>Select an option</mat-label>
-              <mat-select [(value)]="selected">
-                <mat-option>None</mat-option>
-                <mat-option value="option1">Option 1</mat-option>
-                <mat-option value="option2">Option 2</mat-option>
-                <mat-option value="option3">Option 3</mat-option>
-              </mat-select>
-            </mat-form-field>
+              <mat-form-field>
+                  <mat-label>Choisir un mission</mat-label>
+                  <mat-select  [(ngModel)]="selected" name="driver" (selectionChange)="getStat()">
+                    <mat-option *ngFor="let mission of missions" [value]="mission.idmission">
+                      {{mission.idmission}} 
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
           </div>
+
+          <label class="control-label pd">Les clients de ce mission: {{ClientMission}}</label><br><br>
+          <label class="control-label pd">Les clients visités: {{ClientVisite}}</label>
       </div>
   </div>
 </div>
 
 </div>
+
+
 

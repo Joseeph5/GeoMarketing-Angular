@@ -80,11 +80,11 @@ export class MissionsComponent implements OnInit {
     .afterClosed().subscribe(res =>{
       console.log("iddd",id)
       if(res){
-        this.missionservice.delete(id).subscribe(()=>{
+       // this.missionservice.delete(id).subscribe(()=>{
           this.toastr.success('Supprimé avec succès');
-          this.router.navigateByUrl("/missions");
+         
           
-        });
+       // });
         
       }
     });

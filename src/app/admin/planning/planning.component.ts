@@ -10,7 +10,12 @@ import { MatDialog } from '@angular/material';
 import { AddPlanningComponent } from '../add-planning/add-planning.component';
 import { DialogService } from 'src/app/services/dialog.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { FormControl} from '@angular/forms';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { VehiculeService } from 'src/app/services/vehicule.service';
+import { TrackingService } from 'src/app/services/tracking.service';
+import { Mission } from 'src/app/shared/Mission';
+import { MissionServiceService } from 'src/app/services/mission-service.service';
 
 @Component({
   selector: 'app-planning',
@@ -24,7 +29,7 @@ export class PlanningComponent implements OnInit {
   arr :number[][]=new Array();
   cars:any;
  
-
+  test2:any=[1,2,3];
   planningPoiList:any[] =new Array();
   test:any[] =new Array();
   row:string[]=['1','2'];
@@ -32,17 +37,48 @@ export class PlanningComponent implements OnInit {
   editing = {};
   poiSelected:any;
   pois :any[]=new Array();
-  displayedColumns: string[] = ['idplanification'];
+  toppings = new FormControl();
+  driverSelected :string;
+  carsSelected :string;
 
-  constructor(public router:Router,public dialog: MatDialog,
-    private planningService:PlanningService,public dialogServer:DialogService,private toastr: ToastrService) {
+  poiList:any[] ;
+  dirverList:any;
+  carsList:any;
+  mission= new Mission;
+  constructor(public router:Router,public dialog: MatDialog,private apiService:ApiServiceService,
+    public vehiculeService:VehiculeService,public missionservice:MissionServiceService
+    ,public trackService:TrackingService,private planningService:PlanningService,
+    public dialogServer:DialogService,private toastr: ToastrService) {
     
    }
 
   ngOnInit() {
-   this.getPoiMission();
+   this.getPoiPlanning();
+   this.getDrivers();
+    this.getCars();
+    this.getPoi();
   }
-
+  getDrivers(){
+    return this.apiService.getData().subscribe(data => {
+      this.dirverList=data
+      console.log('driiiiiiver',this.dirverList)
+     
+     });
+  }
+  getCars(){
+    return this.vehiculeService.getData().subscribe(data => {
+      this.carsList=data
+       
+     
+     });
+  }
+  getPoi(){
+    this.trackService.getPoiData().subscribe(data=>{
+      this.poiList=data
+      console.log('sssssssssss',this.poiList);
+       
+    });
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPlanningComponent, {
       width: '1500px',
@@ -54,9 +90,19 @@ export class PlanningComponent implements OnInit {
       
     });
   }
-  
+  addMission(){
 
-  getPoiMission(){
+    this.mission.pois=this.toppings.value;
+      console.log('sssssssssss',this.mission);
+
+    this.missionservice.addMission(this.mission).subscribe(()=>{
+          console.log('succès',this.mission)
+          this.toastr.success('Ajouter avec succès');
+          });
+         
+       }
+
+  getPoiPlanning(){
     return this.planningService.getData().subscribe(data => {
     this.rows=data
     for (var i=0; i<this.rows.length; i++) {

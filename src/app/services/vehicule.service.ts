@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable ,throwError} from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { HttpClient ,HttpHeaders,HttpResponse} from '@angular/common/http';
+import { vehicule } from '../shared/vehicule';
 @Injectable({
   providedIn: 'root'
 })
 export class VehiculeService {
   DataURL = 'http://127.0.0.1:8000/vehicule';
   UpdateURL='http://127.0.0.1:8000/';
-  DeleteURL='http://127.0.0.1:8000/';
+  DeleteURL='http://127.0.0.1:8000/removevehicule';
   PostURL='http://127.0.0.1:8000/addvehicule';
 
   handleError(error) {
@@ -52,8 +53,8 @@ export class VehiculeService {
     )
   }
   
-  addVehicule(mission:any): Observable<any> {
-    return this.http.post<any>(this.PostURL,mission)
+  addVehicule(vehicule:vehicule): Observable<vehicule> {
+    return this.http.post<vehicule>(this.PostURL,vehicule)
     .pipe(
       retry(1),
       catchError(this.handleError)

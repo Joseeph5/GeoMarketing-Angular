@@ -102,7 +102,7 @@ export class TrackingComponent implements OnInit {
     this.auth.getPath(this.device,this.startDate,this.endDate).subscribe(data => {
       this.paths=data
       for (var i=0; i<this.paths.length; i++) {
-        this.trames.push(this.paths[i].nextStopDuration);
+        this.trames.push(this.paths[i].beginPathTime);
         
        }
        console.log("starr",this.startDate,this.endDate)

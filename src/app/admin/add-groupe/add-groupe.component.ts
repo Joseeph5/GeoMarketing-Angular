@@ -24,7 +24,7 @@ export class AddGroupeComponent implements OnInit {
     this.groupService.addGroup(this.group).subscribe(()=>{
           console.log('succès',this.group)
           this.toastr.success('Ajouter avec succès');
-          });
+    });
   }
 
   

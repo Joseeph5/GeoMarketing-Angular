@@ -3,10 +3,9 @@
 
 
 
- <div id="container">
-    <div id="inner">
-      <div class="child">
-          <div >
+
+      <div class="col-md-1 ng">
+   
               <div class="list-group affix_dash"  id="sidebar">
                 <a routerLink="/dashboard" class="list-group-item active main-color-bg">
                   <i class="material-icons mg-icon">dashboard </i>
@@ -19,11 +18,11 @@
                 <a routerLink="/cars" class="list-group-item"><i class="material-icons mg-icon">directions_car</i></a>
                 
                
-              </div>
-            </div>
+          </div>
+        
       </div>
 
-      <div class="child2">
+      <div class="col-sm-10 pd">
           <div>
               <h4></h4>
               <mat-form-field>
@@ -54,7 +53,7 @@
                 <mat-label>Les Stope Dduration</mat-label>
                <mat-select [(ngModel)]="selectedValue3" name="trame" >
                  <mat-option *ngFor="let trame of trames; let i = index" [value]="trame">
-                   {{trame}}
+                   {{trame | date: 'yyyy-MM-dd HH:mm:ss'}}
                  </mat-option>
                </mat-select>
              </mat-form-field> 
@@ -94,11 +93,10 @@
             
              </div>
       </div>
-    </div>
-  </div>
+  
 
 
-  <div id="container">
+  <!-- <div id="container">
       <div id="inner">
         <div class="child">
           
@@ -108,4 +106,4 @@
   
         </div>
       </div>
-    </div>
+    </div> -->
