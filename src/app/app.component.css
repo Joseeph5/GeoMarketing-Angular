@@ -17,17 +17,19 @@ body{
     border-color: #3c86e7;  
     margin-bottom:0;
     border-radius:0;
+    font-size: 30px;
   }
   .navbar-default .navbar-header .navbar-brand {
     color: #ecf0f1;
     font-size: 30px;
+    margin-left: 40px;
   }
   
   .navbar-default .navbar-text {
     color: #ecf0f1;
   }
   .mr-left{
-    margin-left: 85px;
+    margin-left: 60px;
    
 }
 
